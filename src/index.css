@@ -1,7 +1,5 @@
 * {
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
+  /* font-family:; */
 }
 
 @font-face {
@@ -54,4 +52,14 @@ p{
   font-family: "R-Light";
   font-size: 19px;
   color: #4D4D4D;
+}
+
+.ant-menu-title-content{
+  font-family: "R-Regular";
+  font-size: 16px;
+  color: #4D4D4D;
+}
+
+h2{
+  font-family: "BaseNeue-Bold";
 }
