@@ -1,5 +1,5 @@
 * {
-  /* font-family:; */
+  margin: 0%;
 }
 
 @font-face {
@@ -39,6 +39,10 @@
   src: url("./assets/fonts/basenuew/BaseNeueTrial-Regular.ttf");
 }
 @font-face {
+  font-family: BaseNeue-Wide;
+  src: url("./assets/fonts/basenuew/BaseNeueTrial-Wide.ttf");
+}
+@font-face {
   font-family: BaseNeue-SemiBold;
   src: url("./assets/fonts/basenuew/BaseNeueTrial-SemiBold.ttf");
 }
@@ -50,7 +54,12 @@
 
 p{
   font-family: "R-Light";
-  font-size: 19px;
+  font-size: 20px;
+  color: #4D4D4D;
+}
+.sm{
+  font-family: "R-Light";
+  font-size: 17px;
   color: #4D4D4D;
 }
 
@@ -62,4 +71,37 @@ p{
 
 h2{
   font-family: "BaseNeue-Bold";
+  font-size: 25px;
+}
+h1{
+  font-family: "BaseNeue-Bold";
+  font-size: 35px;
+}
+.h1{
+  font-family: "BaseNeue-SemiBold";
+  font-size: 50px;
+}
+.h2{
+  font-family: "BaseNeue-Wide";
+  font-size: 46px;
+}
+
+.mt-2{
+  margin-top: 25px;
+}
+.mt-4{
+  margin-top: 40px;
+}
+.mt-l{
+  margin-top: 100px;
+}
+.mt-1{
+  margin-top: 15px;
+}
+.pill{
+  padding:"10px 30px"; 
+  background:"#eaf3fd"; 
+  color:"#163e90"; 
+  border-radius:"20px";
+  font-size:"17px"
 }
