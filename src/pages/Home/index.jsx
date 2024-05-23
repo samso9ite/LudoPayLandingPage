@@ -1,4 +1,4 @@
-import { Badge, Button, Col, Row, Space } from "antd"
+import { Badge, Button, Col, Collapse, Row, Space } from "antd"
 import LandingPageLayout from "../../layout"
 import bannerBG from "../../assets/images/bannerBg.svg"
 import bannerImg from "../../assets/images/bannerImg.svg"
@@ -8,11 +8,14 @@ import receivePaymentImg from "../../assets/images/receivePayment.svg"
 import receiveQR from "../../assets/images/receiveQR.svg"
 import withdrawImg from "../../assets/images/withdraw.svg"
 import getPaidImg from "../../assets/images/getPaid.svg"
+import map from "../../assets/images/map.svg"
 import withdrawIcon from "../../assets/images/withdrawIcon.svg"
 import securityIcon from "../../assets/images/security.svg"
 import supportIcon from "../../assets/images/supportIcon.svg"
+import faqBtn from "../../assets/images/faqBtn.svg"
+import headerGif from "../../assets/images/headerImg.gif"
 import customerSupport from "../../assets/images/customerSupport.svg"
-import {ArrowRightOutlined} from "@ant-design/icons"
+import {ArrowRightOutlined, CaretRightOutlined} from "@ant-design/icons"
 
 const HomePage = () => {
     const style = {
@@ -75,8 +78,96 @@ const HomePage = () => {
             textAlign: "left",
             color:"#909090"
 
+        },
+        pillCount: {
+            backgroundColor:"#1c70eb", 
+            color:"white", 
+            borderRadius:"100%", 
+            padding:"0.4em", 
+            marginRight:"0.7em"
+        },
+        processPill: {
+            display: 'inline-block',
+            backgroundColor:"#f4fafd",
+            color:"#4D4D4D", 
+            fontSize:"20px", 
+            padding:"0.7em", 
+            borderRadius:"50px",
+            margin:"8px",
         }
     }
+
+    let processData = [
+        {
+            title:"Create an account",
+            count: "01"
+        }, 
+        {
+            title:"Click on receive payment",
+            count: "02"
+        },
+        {
+            title:"Input amount to be received",
+            count: "03"
+        },
+        {
+            title:"Select preferred crypto",
+            count: "04"
+        },
+        {
+            title:"Generate payment QR code",
+            count: "05"
+        },
+        {
+            title:"Wait to get paid",
+            count: "06"
+        },
+    ]
+    const panelStyle = {
+        marginBottom: 18,
+        backgroundColor:"#f4fafd",
+        border: '1px solid #BDBDBD',
+        borderRadius:"10px",
+        padding:"0.7em"
+      };
+    const getItems = (panelStyle) => [
+        {
+          key: '1',
+          label: 'What is a Cryptocurrency ?',
+          children: <p>A cryptocurrency is a digital currency that uses encryption to secure transactions and function as a virtual accounting system. Cryptocurrencies are peer-to-peer systems that allow anyone to send and receive payments without banks verifying transactions. 
+            They run on a public ledger called blockchain, which is a record of all transactions held and updated by currency holders</p>,
+          style: panelStyle,
+        },
+        {
+          key: '2',
+          label: 'Do I need a crypto wallet to use Ludopay ?',
+          children: <p>Crypto wallets come in two types: hot (online storage) and cold (offline storage), and a variety of price points. Crypto.com DeFi Wallet and Zengo
+             Wallet are two of the highest-rated hot wallets. Ledger earns top marks among cold wallets</p>,
+          style: panelStyle,
+        },
+        {
+          key: '3',
+          label: 'Is Ludopay free to use?',
+          children: <p>Crypto wallets come in two types: hot (online storage) and cold (offline storage), and a variety of price points. Crypto.com DeFi Wallet and Zengo
+          Wallet are two of the highest-rated hot wallets. Ledger earns top marks among cold wallets</p>,
+          style: panelStyle,
+        },
+        {
+            key: '4',
+            label: 'Is Ludopay free to use?',
+            children: <p>Crypto wallets come in two types: hot (online storage) and cold (offline storage), and a variety of price points. Crypto.com DeFi Wallet and Zengo
+            Wallet are two of the highest-rated hot wallets. Ledger earns top marks among cold wallets</p>,
+            style: panelStyle,
+          },
+          {
+            key: '5',
+            label: 'Is Ludopay free to use?',
+            children: <p>Crypto wallets come in two types: hot (online storage) and cold (offline storage), and a variety of price points. Crypto.com DeFi Wallet and Zengo
+            Wallet are two of the highest-rated hot wallets. Ledger earns top marks among cold wallets</p>,
+            style: panelStyle,
+          },
+      ];
+
     return(
         <>
         <LandingPageLayout>
@@ -98,43 +189,42 @@ const HomePage = () => {
 
           {/* Our Offer Section */}
           <div >
-          <Row style={{margin:"8em"}}>
-            <Col span={11}>
-                <span className="pill" style={style.pill}>Our Offer</span> 
-                <div className="mt-2" style={{width:"90%"}}>
-                <span className="h1" style={{color:"#4d4d4d"}}>
-                    Experience the future of<span style={{color:"#1c70eb"}}> digital payments</span>
-                </span>
-                </div>
-            </Col>
-            <Col span={11}>
-                <Space direction="vertical">
-                    <Space size={45}>
-                        <img src={metreIcon} /> 
-                        <div>
-                            <p style={{...style.offerHeading}}>Better and faster payment alternative</p>
-                            <p className="mt-1 sm">Quickly receive & withdraw funds to your local bank account. No delays, No hassles.</p>
-                        </div>
-                    </Space>
-                    <Space size={50} className="mt-4">
-                        <img src={qrIcon} style={{paddingLeft:"10px"}}/> 
-                        <div>
-                            <p style={{...style.offerHeading}}>Easy and direct process</p>
-                            <p className="mt-1 sm">Our QR scan-and-pay model makes payment very easy for your patrons.</p>
-                        </div>
-                    </Space>
+            <Row style={{margin:"8em"}}>
+                <Col span={11}>
+                    <span className="pill" style={style.pill}>Our Offer</span> 
+                    <div className="mt-2" style={{width:"90%"}}>
+                    <span className="h1" style={{color:"#4d4d4d"}}>
+                        Experience the future of<span style={{color:"#1c70eb"}}> digital payments</span>
+                    </span>
+                    </div>
+                </Col>
+                <Col span={11}>
+                    <Space direction="vertical">
+                        <Space size={45}>
+                            <img src={metreIcon} /> 
+                            <div>
+                                <p style={{...style.offerHeading}}>Better and faster payment alternative</p>
+                                <p className="mt-1 sm">Quickly receive & withdraw funds to your local bank account. No delays, No hassles.</p>
+                            </div>
+                        </Space>
+                        <Space size={50} className="mt-4">
+                            <img src={qrIcon} style={{paddingLeft:"10px"}}/> 
+                            <div>
+                                <p style={{...style.offerHeading}}>Easy and direct process</p>
+                                <p className="mt-1 sm">Our QR scan-and-pay model makes payment very easy for your patrons.</p>
+                            </div>
+                        </Space>
 
-                    <Space size={50} className="mt-4">
-                        <img src={securityIcon} style={{paddingLeft:"10px"}}/> 
-                        <div>
-                            <p style={{...style.offerHeading}}>Security & anonymity</p>
-                            <p className="mt-1 sm">Enjoy our hi-tech security features that keeps your account and money safe and secure.</p>
-                        </div>
+                        <Space size={50} className="mt-4">
+                            <img src={securityIcon} style={{paddingLeft:"10px"}}/> 
+                            <div>
+                                <p style={{...style.offerHeading}}>Security & anonymity</p>
+                                <p className="mt-1 sm">Enjoy our hi-tech security features that keeps your account and money safe and secure.</p>
+                            </div>
+                        </Space>
                     </Space>
-
-                </Space>
-            </Col>
-          </Row>
+                </Col>
+            </Row>
           </div>
         
          {/* Why Choose Ludopay */}
@@ -210,17 +300,79 @@ const HomePage = () => {
          
             {/* How to get Paid with LudoPay */}
             <div style={{backgroundColor:"#0b2253"}}>
-                <Row style={{margin:"8em"}}>
-                    <Col span={11}>
-                        <h3 className="" style={{color:"#fff", fontSize:"40px", fontFamily:""}}>
+                <div style={{margin:"8em"}}>
+                <Row  style={{paddingTop:"7em", paddingBottom:"7em"}}>
+
+                    <Col span={14} className="txt-white">
+                        <h3 style={{fontSize:"45px", fontFamily:"BaseNeue-ExpSemiBsd", width:"70%"}}>
                             How to get paid with Ludopay
                         </h3>
+                        <p  className="txt-white mt-2"  style={{width:"70%", fontSize:"22px"}}>
+                            Want to receive payment using Ludopay, well heres the easy step to go about it</p>
+                        <div className="mt-5">
+                            {processData.map(item => (
+                                <span style={style.processPill}> <span style={style.pillCount}>{item.count}</span> {item.title}  </span>
+                            ))
+                              
+                            }
+                        </div>
                     </Col>
-                    <Col span={11}>
+                    <Col span={9}>
                         <img src={getPaidImg} width={"80%"} />
                     </Col>
                 </Row>
+                </div>
             </div>
+
+            {/* Vision Section */}
+            <div>
+                <Row style={{margin:"8em"}}>
+                    <Col span={11}>
+                        <span className="pill" style={style.pill}>Our Vision</span> 
+                        <p className="h2 mt-2" style={{...style.whyHeading, width:"90%", lineHeight:"50px"}}>
+                            <span style={{color:"#1c70eb"}}>A world of diversity in payments</span>
+                        </p>
+                        <p className="mt-2" style={{textAlign:"justify", lineHeight:"30px"}}>
+                            We understand how important revenue is to the smooth running of businesses. We envision a world where businesses
+                            are not tethered to any payment system or model, a world where payments can be made through diverse means
+                        </p>
+                    </Col>
+                    <Col span={11}>
+                        <img src={map} />
+                    </Col>
+                </Row>
+          </div>
+
+          <div style={{backgroundColor:"#F5FAFE"}}>
+            <div style={{marginTop:"5em", marginBottom:"5em",  display:"grid", placeItems:"center"}}>
+                <span style={{...style.pill, color:"#1C70EB", backgroundColor:"white"}}> Testimonials </span><br />
+                <span style={{...style.processHeader, fontSize:"30px", marginTop:"0px"}}>
+                   What our customers had to say
+                </span>
+            </div>
+          </div>
+
+          <div style={{margin:"8em"}}>
+            <Row style={{display:"grid", placeItems:"center"}}>
+                <p style={{...style.processHeader, fontSize:"31px", fontWeight:"800", color:"#153E90"}}> Frequently Asked Questions</p>
+
+                <Collapse
+                    bordered={false}
+                    defaultActiveKey={['1']}
+                    expandIcon={({ isActive }) => <img src={faqBtn} style={{marginTop:"1em"}}/>}
+                    style={{
+                        marginTop:"3em",
+                        width: "80%"
+                    }}
+                    items={getItems(panelStyle)}
+                    expandIconPosition="end"
+                />
+            </Row>
+          </div>
+
+          <div style={{margin:"8em", backgroundColor:"#1C70EB", color:"white"}}>
+                <h2>Sign up on Ludopay and get a welcome gift</h2>
+          </div>
         </LandingPageLayout>
            
         </>
