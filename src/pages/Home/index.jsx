@@ -13,9 +13,14 @@ import withdrawIcon from "../../assets/images/withdrawIcon.svg"
 import securityIcon from "../../assets/images/security.svg"
 import supportIcon from "../../assets/images/supportIcon.svg"
 import faqBtn from "../../assets/images/faqBtn.svg"
+import mobileImg from "../../assets/images/mobileImg.svg"
+import googleBtn from "../../assets/images/googleBtn.svg"
+import appleBtn from "../../assets/images/appleBtn.svg"
 import headerGif from "../../assets/images/headerImg.gif"
 import customerSupport from "../../assets/images/customerSupport.svg"
-import {ArrowRightOutlined, CaretRightOutlined} from "@ant-design/icons"
+import {ArrowRightOutlined, MailFilled} from "@ant-design/icons"
+import Search from "antd/es/input/Search"
+import Input from "antd/es/input/Input"
 
 const HomePage = () => {
     const style = {
@@ -329,8 +334,8 @@ const HomePage = () => {
                 <Row style={{margin:"8em"}}>
                     <Col span={11}>
                         <span className="pill" style={style.pill}>Our Vision</span> 
-                        <p className="h2 mt-2" style={{...style.whyHeading, width:"90%", lineHeight:"50px"}}>
-                            <span style={{color:"#1c70eb"}}>A world of diversity in payments</span>
+                        <p className="h2 mt-2" style={{...style.whyHeading, width:"90%", lineHeight:"50px", color:"#1c70eb"}}>
+                            A world of diversity in payments
                         </p>
                         <p className="mt-2" style={{textAlign:"justify", lineHeight:"30px"}}>
                             We understand how important revenue is to the smooth running of businesses. We envision a world where businesses
@@ -370,8 +375,46 @@ const HomePage = () => {
             </Row>
           </div>
 
-          <div style={{margin:"8em", backgroundColor:"#1C70EB", color:"white"}}>
-                <h2>Sign up on Ludopay and get a welcome gift</h2>
+          <div style={{margin:"8em"}}>
+            <Row style={{ backgroundColor:"#1C70EB",borderRadius:"10px"}}>
+                <Col span={11} style={{paddingTop:"3.5em",paddingBottom:"3.5em", paddingLeft:"6em"}}>
+                    <p className="mt-2 txt-white" style={{lineHeight:"50px", fontSize:"35px",fontWeight:"700", fontFamily:"BaseNeue-ExpSemiBsd"}}>
+                        Sign up on Ludopay and get a welcome gift
+                    </p>
+                    <p className="mt-2 txt-white" style={{fontWeight:"600", fontFamily:"R-Regular"}}>Switch to the crypto-side of payments with Ludopay!
+                        Get paid in cryptocurrency, receive the funds in your local currency. Transfer or send money to any local bank account. 
+                        All on Ludopay.
+                    </p>
+                    <p className="mt-2 txt-white" style={{fontWeight:"600", fontFamily:"R-Regular"}}>
+                        Get the app now:
+                    <div className="mt-2">
+                        <img src={appleBtn} /> <img src={googleBtn} />
+                        </div>
+                    </p>
+                </Col>
+                <Col span={3}>
+                </Col>
+                <Col span={10} style={{display:"flex",  alignItems: 'right'}}>
+                    <img src={mobileImg} width={"100%"} />
+                </Col>
+            </Row>
+               
+               {/* Newsletter */}
+               <div style={{margin:"8em"}}>
+                    <Row style={{display:"grid", placeItems:"center"}}>
+                        <span style={{...style.processHeader, fontSize:"40px"}}>
+                            Want Our Latest Updates ?
+                        </span>
+                        <p className="mt-1" style={{color:"#0B2253"}}>Input your email to get update from us</p>
+                            <Space direction="vertical" size="middle" className="mt-2">
+                                <Space.Compact style={{ width: '100%' }}>
+                                    <Input prefix={<MailFilled color="#183b56" />} style={{width:"35em", height:"50px"}} placeholder="Your email" />
+                                    <Button type="primary" style={{height:"50px", width:"10em"}}>Submit</Button>
+                                </Space.Compact>
+                            </Space>
+                       
+                    </Row>
+               </div>
           </div>
         </LandingPageLayout>
            

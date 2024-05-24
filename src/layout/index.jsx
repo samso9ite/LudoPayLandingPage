@@ -1,6 +1,7 @@
-import { Flex, Layout } from 'antd';
+import { Flex, Layout, Row } from 'antd';
 import HeaderNav from '../components/Header';
 import bannerBG from "../assets/images/bannerBg.svg"
+import FooterComp from '../components/Footer';
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -16,7 +17,9 @@ const LandingPageLayout = ({children}) => {
                     <HeaderNav />
                 </Header>
                     <Content >{children}</Content>
-                <Footer >Footer</Footer>
+                <Footer style={{backgroundColor:"#0b2253"}}>
+                    <FooterComp />
+                </Footer>
                 </Layout>
             </Flex>
         </>
