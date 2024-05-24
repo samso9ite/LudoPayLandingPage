@@ -1,4 +1,4 @@
-import { Avatar, Badge, Button, Card, Carousel, Col, Collapse, Rate, Row, Space } from "antd"
+import { Avatar, Button, Card, Carousel, Col, Collapse, Rate, Row, Space } from "antd"
 import LandingPageLayout from "../../layout"
 import bannerBG from "../../assets/images/bannerBg.svg"
 import bannerImg from "../../assets/images/bannerImg.svg"
@@ -8,129 +8,29 @@ import receivePaymentImg from "../../assets/images/receivePayment.svg"
 import receiveQR from "../../assets/images/receiveQR.svg"
 import withdrawImg from "../../assets/images/withdraw.svg"
 import getPaidImg from "../../assets/images/getPaid.svg"
+import getPaidLImg from "../../assets/images/getPaidLImg.svg"
+import getPaidRImg from "../../assets/images/getPaidBgR.svg"
 import map from "../../assets/images/map.svg"
 import withdrawIcon from "../../assets/images/withdrawIcon.svg"
 import securityIcon from "../../assets/images/security.svg"
 import supportIcon from "../../assets/images/supportIcon.svg"
 import faqBtn from "../../assets/images/faqBtn.svg"
+import processBg from "../../assets/images/processBg.svg"
 import mobileImg from "../../assets/images/mobileImg.svg"
 import googleBtn from "../../assets/images/googleBtn.svg"
 import appleBtn from "../../assets/images/appleBtn.svg"
 import headerGif from "../../assets/images/headerImg.gif"
 import customerSupport from "../../assets/images/customerSupport.svg"
 import {ArrowRightOutlined, MailFilled} from "@ant-design/icons"
-import Search from "antd/es/input/Search"
 import Input from "antd/es/input/Input"
 import testimonialImg from "../../assets/images/testimonialImg.svg"
 import testimonialImg2 from "../../assets/images/testimonialImg2.svg"
 import testimonial3 from "../../assets/images/testimonial3.svg"
+import { processData, getItems, items } from "../../data"
+import { style } from "./style"
 
 const HomePage = () => {
-    const style = {
-        heroHeader: {
-            fontFamily: "BaseNeue-SemiBold",
-            fontSize:"65px",
-            width:"95%",
-            lineHeight:"70px"
-        },
-        primaryBtn: {
-            backgroundColor:"#1C70EB", 
-            color:"white", 
-            border:"none"
-        },
-        pill: {
-            padding:"10px 30px", 
-            background:"#eaf3fd", 
-            color:"#163e90", 
-            borderRadius:"20px", 
-            fontSize:"19px"
-        },
-        hero: {
-            backgroundImage:`url(${bannerBG})`,
-            backgroundSize:"cover", 
-            backgroundPosition:"center", 
-            backgroundRepeat:"no-repeat", 
-            paddingTop:"5em", 
-            paddingBottom:"5em"
-        },
-        offerHeading: {
-            fontSize:"23px", 
-            fontWeight:"800"
-        },
-        whyHeading: {
-            width:"50%", 
-            fontWeight:"800", 
-            color:"#163e90", 
-            lineHeight:"1.4"
-        },
-        btnSpacing: {
-            height:"3.5em",
-            paddingLeft:"3em", 
-            paddingRight:"3em", 
-            marginTop:"3em",
-            fontWeight:"600"
-        },
-        processHeader: {
-            fontSize: "40px",
-            fontWeight: "400",
-            lineHeight: "54px",
-            textAlign: "left",
-            fontFamily:"R-Regular",
-            marginTop:"0.6em",
-            color:"#0B2253"
-        },
-        processText: {
-            fontFamily: "R-Light",
-            fontSize: "22px",
-            lineHeight: "32px",
-            textAlign: "left",
-            color:"#909090"
-
-        },
-        pillCount: {
-            backgroundColor:"#1c70eb", 
-            color:"white", 
-            borderRadius:"100%", 
-            padding:"0.4em", 
-            marginRight:"0.7em"
-        },
-        processPill: {
-            display: 'inline-block',
-            backgroundColor:"#f4fafd",
-            color:"#4D4D4D", 
-            fontSize:"20px", 
-            padding:"0.7em", 
-            borderRadius:"50px",
-            margin:"8px",
-        }
-    }
-
-    let processData = [
-        {
-            title:"Create an account",
-            count: "01"
-        }, 
-        {
-            title:"Click on receive payment",
-            count: "02"
-        },
-        {
-            title:"Input amount to be received",
-            count: "03"
-        },
-        {
-            title:"Select preferred crypto",
-            count: "04"
-        },
-        {
-            title:"Generate payment QR code",
-            count: "05"
-        },
-        {
-            title:"Wait to get paid",
-            count: "06"
-        },
-    ]
+  
     const panelStyle = {
         marginBottom: 18,
         backgroundColor:"#f4fafd",
@@ -138,58 +38,9 @@ const HomePage = () => {
         borderRadius:"10px",
         padding:"0.7em"
       };
-    const getItems = (panelStyle) => [
-        {
-          key: '1',
-          label: 'What is a Cryptocurrency ?',
-          children: <p>A cryptocurrency is a digital currency that uses encryption to secure transactions and function as a virtual accounting system. Cryptocurrencies are peer-to-peer systems that allow anyone to send and receive payments without banks verifying transactions. 
-            They run on a public ledger called blockchain, which is a record of all transactions held and updated by currency holders</p>,
-          style: panelStyle,
-        },
-        {
-          key: '2',
-          label: 'Do I need a crypto wallet to use Ludopay ?',
-          children: <p>Crypto wallets come in two types: hot (online storage) and cold (offline storage), and a variety of price points. Crypto.com DeFi Wallet and Zengo
-             Wallet are two of the highest-rated hot wallets. Ledger earns top marks among cold wallets</p>,
-          style: panelStyle,
-        },
-        {
-          key: '3',
-          label: 'Is Ludopay free to use?',
-          children: <p>Crypto wallets come in two types: hot (online storage) and cold (offline storage), and a variety of price points. Crypto.com DeFi Wallet and Zengo
-          Wallet are two of the highest-rated hot wallets. Ledger earns top marks among cold wallets</p>,
-          style: panelStyle,
-        },
-        {
-            key: '4',
-            label: 'Is Ludopay free to use?',
-            children: <p>Crypto wallets come in two types: hot (online storage) and cold (offline storage), and a variety of price points. Crypto.com DeFi Wallet and Zengo
-            Wallet are two of the highest-rated hot wallets. Ledger earns top marks among cold wallets</p>,
-            style: panelStyle,
-          },
-          {
-            key: '5',
-            label: 'Is Ludopay free to use?',
-            children: <p>Crypto wallets come in two types: hot (online storage) and cold (offline storage), and a variety of price points. Crypto.com DeFi Wallet and Zengo
-            Wallet are two of the highest-rated hot wallets. Ledger earns top marks among cold wallets</p>,
-            style: panelStyle,
-          },
-      ];
-      const items = [
-        { id: 1, content: 'I must commend the simplicity of the platform and payment process +. It was so easy to use. Thumbs up, guys! ',
-         rating:5, name:" Chukwuma Obi"},
-        { id: 2, content: 'Thanks to LudoPay, I have been able to expand payment options for my services. The process was smooth and direct. My customers are happy. I am happy. I recommend LudoPay 100%',
-         name:"Femi Awoyeye", rating:4 },
-        { id: 3, content: 'I love how I could tell our customers that we accept cryptocurrencies. It warms their heart and makes them see how much we have grown. Thank you, Ludopay.',
-         name:"Sidi Herbert", rating:5 },
-         { id: 4, content: 'Thanks to LudoPay, I have been able to expand payment options for my services. The process was smooth and direct. My customers are happy. I am happy. I recommend LudoPay 100%',
-         name:"Femi Awoyeye" },
-         { id: 5, content: '“I must commend the simplicity of the platform and payment process +. It was so easy to use. Thumbs up, guys! “',
-         rating:3, name:" Chukwuma Obi"},
-         { id: 6, content: 'I love how I could tell our customers that we accept cryptocurrencies. It warms their heart and makes them see how much we have grown. Thank you, Ludopay.',
-         name:"Sidi Herbert", rating:5 },
-      ];
-      const chunkArray = (array, chunkSize) => {
+    
+     
+    const chunkArray = (array, chunkSize) => {
         const results = [];
         while (array.length) {
           results.push(array.splice(0, chunkSize));
@@ -271,7 +122,7 @@ const HomePage = () => {
             </div>
 
             {/* Process Section */}
-            <div>
+            <div style={{backgroundImage:`url(${processBg})`}}>
                 <div style={{margin:"8em"}}>
                     <Row >
                         <Col span={12}>
@@ -328,31 +179,26 @@ const HomePage = () => {
             </div>
          
             {/* How to get Paid with LudoPay */}
-            <div style={{backgroundColor:"#0b2253"}}>
-                <div style={{margin:"8em"}}>
-                <Row  style={{paddingTop:"7em", paddingBottom:"7em"}}>
-
-                    <Col span={14} className="txt-white">
-                        <h3 style={{fontSize:"45px", fontFamily:"BaseNeue-ExpSemiBsd", width:"70%"}}>
-                            How to get paid with Ludopay
-                        </h3>
-                        <p  className="txt-white mt-2"  style={{width:"70%", fontSize:"22px"}}>
-                            Want to receive payment using Ludopay, well heres the easy step to go about it</p>
-                        <div className="mt-5">
-                            {processData.map(item => (
-                                <span style={style.processPill}> <span style={style.pillCount}>{item.count}</span> {item.title}  </span>
-                            ))
-                              
-                            }
-                        </div>
-                    </Col>
-                    <Col span={9}>
-                        <img src={getPaidImg} width={"80%"} />
-                    </Col>
-                </Row>
-                </div>
-            </div>
-
+                  <Row  style={{paddingTop:"7em", paddingBottom:"7em"}}>
+                        <Col span={14} className="txt-white" style={{...style.processCol, backgroundImage:`url(${getPaidLImg})`}} >
+                            <h3 style={{fontSize:"45px", fontFamily:"BaseNeue-ExpSemiBsd", width:"70%"}}>
+                                How to get paid with Ludopay
+                            </h3>
+                            <p  className="txt-white mt-2"  style={{width:"70%", fontSize:"22px"}}>
+                                Want to receive payment using Ludopay, well heres the easy step to go about it</p>
+                            <div className="mt-5">
+                                {processData.map(item => (
+                                    <span style={style.processPill}> <span style={style.pillCount}>{item.count}</span> {item.title}  </span>
+                                ))
+                                
+                                }
+                            </div>
+                        </Col>
+                        <Col span={10} style={{...style.processCol, backgroundImage:`url(${getPaidRImg})`}}>
+                            <img src={getPaidImg} width={"100%"} />
+                        </Col>
+                    </Row>
+           
             {/* Vision Section */}
             <div>
                 <Row style={{margin:"8em"}}>
