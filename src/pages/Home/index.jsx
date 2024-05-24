@@ -1,4 +1,4 @@
-import { Badge, Button, Col, Collapse, Row, Space } from "antd"
+import { Avatar, Badge, Button, Card, Carousel, Col, Collapse, Rate, Row, Space } from "antd"
 import LandingPageLayout from "../../layout"
 import bannerBG from "../../assets/images/bannerBg.svg"
 import bannerImg from "../../assets/images/bannerImg.svg"
@@ -21,6 +21,9 @@ import customerSupport from "../../assets/images/customerSupport.svg"
 import {ArrowRightOutlined, MailFilled} from "@ant-design/icons"
 import Search from "antd/es/input/Search"
 import Input from "antd/es/input/Input"
+import testimonialImg from "../../assets/images/testimonialImg.svg"
+import testimonialImg2 from "../../assets/images/testimonialImg2.svg"
+import testimonial3 from "../../assets/images/testimonial3.svg"
 
 const HomePage = () => {
     const style = {
@@ -172,7 +175,28 @@ const HomePage = () => {
             style: panelStyle,
           },
       ];
-
+      const items = [
+        { id: 1, content: 'I must commend the simplicity of the platform and payment process +. It was so easy to use. Thumbs up, guys! ',
+         rating:5, name:" Chukwuma Obi"},
+        { id: 2, content: 'Thanks to LudoPay, I have been able to expand payment options for my services. The process was smooth and direct. My customers are happy. I am happy. I recommend LudoPay 100%',
+         name:"Femi Awoyeye", rating:4 },
+        { id: 3, content: 'I love how I could tell our customers that we accept cryptocurrencies. It warms their heart and makes them see how much we have grown. Thank you, Ludopay.',
+         name:"Sidi Herbert", rating:5 },
+         { id: 4, content: 'Thanks to LudoPay, I have been able to expand payment options for my services. The process was smooth and direct. My customers are happy. I am happy. I recommend LudoPay 100%',
+         name:"Femi Awoyeye" },
+         { id: 5, content: '“I must commend the simplicity of the platform and payment process +. It was so easy to use. Thumbs up, guys! “',
+         rating:3, name:" Chukwuma Obi"},
+         { id: 6, content: 'I love how I could tell our customers that we accept cryptocurrencies. It warms their heart and makes them see how much we have grown. Thank you, Ludopay.',
+         name:"Sidi Herbert", rating:5 },
+      ];
+      const chunkArray = (array, chunkSize) => {
+        const results = [];
+        while (array.length) {
+          results.push(array.splice(0, chunkSize));
+        }
+        return results;
+      };
+      const chunkedItems = chunkArray([...items], 3);
     return(
         <>
         <LandingPageLayout>
@@ -349,11 +373,41 @@ const HomePage = () => {
           </div>
 
           <div style={{backgroundColor:"#F5FAFE"}}>
-            <div style={{marginTop:"5em", marginBottom:"5em",  display:"grid", placeItems:"center"}}>
-                <span style={{...style.pill, color:"#1C70EB", backgroundColor:"white"}}> Testimonials </span><br />
+            <div  style={{ display:"grid", placeItems:"center", paddingBottom:"5em"}}>
+                <span style={{...style.pill, color:"#1C70EB", backgroundColor:"white"}} className="mt-5"> Testimonials </span><br />
                 <span style={{...style.processHeader, fontSize:"30px", marginTop:"0px"}}>
                    What our customers had to say
                 </span>
+                <center>
+                <div className="mt-4">
+                <Carousel autoplay
+                    arrows
+                    dotPosition="left"
+                    // effect="scrolly"
+                            infinite="true"
+                    >
+                    {chunkedItems.map((chunk, index) => (
+                        <div key={index}>
+                        <Row gutter={35} style={{ width:"70%", display:"flex"}}>
+                            {chunk.map(item => (
+                            <Col key={item.id} span={8}>
+                                <Card style={{border:"1px solid #1C70EB", 
+                                    backgroundColor:"transparent", height:"320px"}}>
+                                        <center><Avatar src={testimonialImg} size={75} /></center>
+                                        <p className="mt-1" style={{color:"#0B2253"}}>{item.name}</p>
+                                        <div className="mt-1">
+                                            <Rate defaultValue={3} allowClear={false} style={{color:"#1C70EB"}}/>
+                                        </div>
+                                    <div className="mt-1">{item.content}</div>
+                                </Card>
+                            </Col>
+                            ))}
+                        </Row>
+                        </div>
+                    ))}
+                    </Carousel>
+                </div>
+                </center>
             </div>
           </div>
 
@@ -412,7 +466,6 @@ const HomePage = () => {
                                     <Button type="primary" style={{height:"50px", width:"10em"}}>Submit</Button>
                                 </Space.Compact>
                             </Space>
-                       
                     </Row>
                </div>
           </div>
