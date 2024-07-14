@@ -2,10 +2,38 @@ import bannerBG from "../../assets/images/bannerBg.svg"
 
 export const style = {
     heroHeader: {
-        fontFamily: "BaseNeue-SemiBold",
-        fontSize:"65px",
-        width:"95%",
-        lineHeight:"70px"
+        base: {
+            fontFamily: "BaseNeue-SemiBold",
+            fontSize:"65px",
+            width:"95%",
+            lineHeight:"70px"
+        },
+        mobile: {
+          fontSize: '10em',
+          textAlign: 'center',
+          fontFamily: "BaseNeue-SemiBold",
+        },
+      },
+      heroHeaderDescription: {
+        base: {
+            width:"85%", 
+            color:"white", 
+            fontSize:"22px", 
+            fontWeight:"800"
+        },
+        mobile: {
+            fontSize:"3em",
+            textAlign: "center",
+            color:"white",
+        }
+      },
+      heroImg: {
+        margin:"0px auto"
+      },
+    btnMobile: {
+        fontSize:"23px",
+        paddingLeft: '5em',
+        paddingRight: "5em",
     },
     primaryBtn: {
         backgroundColor:"#1C70EB", 
@@ -19,23 +47,54 @@ export const style = {
         borderRadius:"20px", 
         fontSize:"19px"
     },
+    pillBtn: {
+        base: {
+            padding:"10px 30px", 
+            background:"#eaf3fd", 
+            color:"#163e90", 
+            borderRadius:"20px", 
+            // fontSize:"19px"
+        },
+        mobile: {
+            fontSize: "35px",
+            marginBottom:"1em"
+        }
+    },
+    mobileH1: {
+        fontSize:"90px",
+        lineHeight:"1.4em",
+        // marginBottom:"2em"
+    },
+    mobileImg: {
+        width:"170%",
+        marginBottom:"4em"
+    },
+  
     hero: {
         backgroundImage:`url(${bannerBG})`,
         backgroundSize:"cover", 
         backgroundPosition:"center", 
         backgroundRepeat:"no-repeat", 
         paddingTop:"5em", 
-        paddingBottom:"5em"
+        // paddingBottom:"5em"
     },
     offerHeading: {
         fontSize:"23px", 
         fontWeight:"800"
     },
+    whyContainer: {
+        display:"grid", 
+        placeItems:"center"
+    },
     whyHeading: {
-        width:"50%", 
-        fontWeight:"800", 
-        color:"#163e90", 
-        lineHeight:"1.4"
+        base: {
+            width:"50%", 
+            fontWeight:"800", 
+            color:"#163e90", 
+            lineHeight:"1.4",
+            textAlign:"center"
+        },
+       
     },
     btnSpacing: {
         height:"3.5em",
@@ -45,13 +104,28 @@ export const style = {
         fontWeight:"600"
     },
     processHeader: {
-        fontSize: "40px",
-        fontWeight: "400",
-        lineHeight: "54px",
-        textAlign: "left",
-        fontFamily:"R-Regular",
-        marginTop:"0.6em",
-        color:"#0B2253"
+        base: {
+            fontSize: "40px",
+            fontWeight: "400",
+            lineHeight: "54px",
+            textAlign: "left",
+            fontFamily:"R-Regular",
+            marginTop:"0.6em",
+            color:"#0B2253"
+        },
+        mobile: {
+            fontSize:"60px", 
+            width:"70%", 
+            lineHeight:"1.3em"
+        },
+        text: {
+            fontFamily: "R-Light",
+            fontSize: "22px",
+            lineHeight: "32px",
+            textAlign: "left",
+            color:"#909090"
+        }
+       
     },
     processText: {
         fontFamily: "R-Light",
@@ -80,6 +154,36 @@ export const style = {
     processCol: {
         backgroundColor:"#0b2253", 
         backgroundRepeat:"no-repeat", 
-        padding:"8em"
+        padding:"8em",
+        backgroundSize:"cover"
     },
+    vision: {
+        width:"90%", 
+        lineHeight:"50px", 
+        color:"#1c70eb"
+    },
+    signUp : {
+        txt:{
+            lineHeight:"50px", 
+            fontSize:"35px",
+            fontWeight:"700", 
+            fontFamily:"BaseNeue-ExpSemiBsd"
+        },
+        headerMobile:{
+            fontSize:"60px", 
+            lineHeight:"1.3em", 
+            textAlign:"center", 
+            width:"70%", 
+            margin:"0px auto"
+        }
+    },
+    faq: {
+        base:{
+            fontSize:"31px", 
+            fontWeight:"800", 
+            color:"#153E90"
+        },
+      
+    }
 }
+

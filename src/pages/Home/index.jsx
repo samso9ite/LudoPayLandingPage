@@ -1,6 +1,5 @@
 import { Avatar, Button, Card, Carousel, Col, Collapse, Rate, Row, Space } from "antd"
 import LandingPageLayout from "../../layout"
-import bannerBG from "../../assets/images/bannerBg.svg"
 import bannerImg from "../../assets/images/bannerImg.svg"
 import metreIcon from "../../assets/images/metre.svg"
 import qrIcon from "../../assets/images/qr.svg"
@@ -19,26 +18,37 @@ import processBg from "../../assets/images/processBg.svg"
 import mobileImg from "../../assets/images/mobileImg.svg"
 import googleBtn from "../../assets/images/googleBtn.svg"
 import appleBtn from "../../assets/images/appleBtn.svg"
-import headerGif from "../../assets/images/headerImg.gif"
 import customerSupport from "../../assets/images/customerSupport.svg"
 import {ArrowRightOutlined, MailFilled} from "@ant-design/icons"
 import Input from "antd/es/input/Input"
 import testimonialImg from "../../assets/images/testimonialImg.svg"
-import testimonialImg2 from "../../assets/images/testimonialImg2.svg"
-import testimonial3 from "../../assets/images/testimonial3.svg"
 import { processData, getItems, items } from "../../data"
 import { style } from "./style"
+import styled from 'styled-components';
+import { useEffect, useState } from "react"
+
 
 const HomePage = () => {
+    const [isMobile, setIsMobile] = useState(false);
   
-    const panelStyle = {
-        marginBottom: 18,
-        backgroundColor:"#f4fafd",
-        border: '1px solid #BDBDBD',
-        borderRadius:"10px",
-        padding:"0.7em"
-      };
+    const updateMedia = () => {
+        setIsMobile(window.innerWidth <= 576);
+    };
     
+    useEffect(() => {
+        updateMedia();
+        window.addEventListener('resize', updateMedia);
+        return () => window.removeEventListener('resize', updateMedia);
+        }, []);
+    
+        const panelStyle = {
+            marginBottom: 18,
+            backgroundColor:"#f4fafd",
+            border: '1px solid #BDBDBD',
+            borderRadius:"10px",
+            padding:"0.7em",
+            fontSize: isMobile ? "85px" : ''
+        };
      
     const chunkArray = (array, chunkSize) => {
         const results = [];
@@ -48,58 +58,93 @@ const HomePage = () => {
         return results;
       };
       const chunkedItems = chunkArray([...items], 3);
+
+      
     return(
         <>
         <LandingPageLayout>
-          <Row style={style.hero}>
-            <Col span={13} style={{padding:"8em", color:"white"}}>
-                <h1 style={{...style.heroHeader}}>
-                    Switch to the crypto-side of Payments
-                </h1>
-                <p className="mt-2" style={{width:"85%", color:"white", fontSize:"22px", fontWeight:"800"}}>
-                    Give your customers a better and more secured payment option. 
-                    Get paid in crypto, receive the payments as fiat money. It’s fast and easy.
-                </p>
-                <Button size="large" style={{...style.primaryBtn, ...style.btnSpacing}}>Get Started <ArrowRightOutlined color="white" width={"50"} /></Button>
+        <Row style={style.hero}>
+            <Col
+        xxl={13}
+        xl={13}
+        md={13}
+        sm={24}
+        style={{ padding: "8em", color: "white" }}
+    >
+        <h1 style={isMobile ? style.heroHeader.mobile : style.heroHeader.base}>
+            Switch to the crypto-side of Payments
+        </h1>
+        <p
+            className="mt-2"
+            style={isMobile ? style.heroHeaderDescription.mobile : style.heroHeaderDescription.base}
+        >
+            Give your customers a better and more secured payment option. 
+            Get paid in crypto, receive the payments as fiat money. It’s fast and easy.
+        </p>
+        <div
+            style={{
+                display: isMobile ? "flex" : "block",
+                justifyContent: isMobile ? "center" : "flex-start",
+            }}
+        >
+            <Button
+                size="large"
+                style={{
+                    ...style.primaryBtn,
+                    ...style.btnSpacing,
+                    ...(isMobile ? style.btnMobile : {}),
+                    fontSize: isMobile ? "45px" : '',
+                    borderRadius: isMobile ? "20px" : ''
+                }}
+            >
+                        Get Started <ArrowRightOutlined color="white" width={"50"} />
+                    </Button>
+                </div>
             </Col>
-            <Col span={8}>
+            <Col
+                xxl={8}
+                xl={8}
+                sm={24}
+                style={isMobile ? style.heroImg : ''}
+            >
                 <img src={bannerImg} />
             </Col>
-          </Row>
+        </Row>
+
 
           {/* Our Offer Section */}
-          <div >
-            <Row style={{margin:"8em"}}>
-                <Col span={11}>
-                    <span className="pill" style={style.pill}>Our Offer</span> 
-                    <div className="mt-2" style={{width:"90%"}}>
-                    <span className="h1" style={{color:"#4d4d4d"}}>
-                        Experience the future of<span style={{color:"#1c70eb"}}> digital payments</span>
-                    </span>
+          <div style={{backgroundColor:"#F5FAFE"}}>
+            <Row style={{padding:"8em"}}>
+                <Col xl={11} md={11} sm={24}>
+                    <span className="pill" style={{...style.pill, ...(isMobile && style.pillBtn.mobile )}}>Our Offer</span> 
+                    <div className="mt-2" style={{ width:"90%"}}>
+                        <span className="h1" style={{color:"#4d4d4d", ...(isMobile && style.mobileH1)}}>
+                            Experience the future of <span style={{color:"#1c70eb"}}> digital payments</span>
+                        </span>
                     </div>
                 </Col>
-                <Col span={11}>
+                <Col xl={11} md={11} sm={24} style={isMobile ? {marginTop:"4em"} : {}}>
                     <Space direction="vertical">
                         <Space size={45}>
-                            <img src={metreIcon} /> 
-                            <div>
-                                <p style={{...style.offerHeading}}>Better and faster payment alternative</p>
-                                <p className="mt-1 sm">Quickly receive & withdraw funds to your local bank account. No delays, No hassles.</p>
+                        <img src={metreIcon} style={isMobile ? { width: '200px' } : {}} />
+                            <div style={{width:"80%"}}>
+                                <p style={{...style.offerHeading, ...(isMobile && {fontSize:"50px"})}}>Better and faster payment alternative</p>
+                                <p className="mt-1 sm" style={isMobile ? {fontSize:"40px"} : {}}> Quickly receive & withdraw funds to your local bank account. No delays, No hassles.</p>
                             </div>
                         </Space>
-                        <Space size={50} className="mt-4">
-                            <img src={qrIcon} style={{paddingLeft:"10px"}}/> 
-                            <div>
-                                <p style={{...style.offerHeading}}>Easy and direct process</p>
-                                <p className="mt-1 sm">Our QR scan-and-pay model makes payment very easy for your patrons.</p>
+                        <Space size={45} className="mt-4" style={isMobile ? {marginTop:'7em'} : ''}>
+                            <img src={qrIcon} style={{paddingLeft:"10px", ...(isMobile ? { width: '200px' } : {})}}/> 
+                            <div style={{width:"80%"}}>
+                                <p style={{...style.offerHeading, ...(isMobile && {fontSize:"50px"})}}>Easy and direct process</p>
+                                <p className="mt-1 sm" style={isMobile ? {fontSize:"40px"} : {}}>Our QR scan-and-pay model makes payment very easy for your patrons.</p>
                             </div>
                         </Space>
 
-                        <Space size={50} className="mt-4">
-                            <img src={securityIcon} style={{paddingLeft:"10px"}}/> 
+                        <Space size={45} className="mt-4"  style={isMobile ? {marginTop:'8em'} : ''}>
+                            <img src={securityIcon} style={{paddingLeft:"10px", ...(isMobile ? { width: '200px' } : {})}}/> 
                             <div>
-                                <p style={{...style.offerHeading}}>Security & anonymity</p>
-                                <p className="mt-1 sm">Enjoy our hi-tech security features that keeps your account and money safe and secure.</p>
+                                <p style={{...style.offerHeading, ...(isMobile && {fontSize:"50px"})}}>Security & anonymity</p>
+                                <p className="mt-1 sm" style={isMobile ? {fontSize:"40px"} : {}}>Enjoy our hi-tech security features that keeps your account and money safe and secure.</p>
                             </div>
                         </Space>
                     </Space>
@@ -108,120 +153,151 @@ const HomePage = () => {
           </div>
         
          {/* Why Choose Ludopay */}
-          <div style={{display:"grid", placeItems:"center"}}>
-                <span style={{...style.pill}}> Why choose Ludopay? </span>
-                    <p className="h2 mt-2" style={{...style.whyHeading}}>
-                        <center> <span style={{color:"#1c70eb"}}>Exploring new </span> possibilities in payments for Africans</center>
-                    </p>
-                    <p className="mt-2" style={{width:"60%", textAlign:"center", lineHeight:"2"}}>
-                        We believe that using the Ludopay platform will bring great ease to how businesses can receive 
-                        payments for their products and services, hence exposing more businesses to possibilities that 
-                        lies in how payments can be made in Africa. 
-                    </p>
-                    <Button style={{...style.primaryBtn, ...style.btnSpacing}}>Get Started</Button>
+         <div style={{ ...(isMobile ? {padding:"8em"} : style.whyContainer)}}>
+            <span style={{...style.pill, ...(isMobile && style.pillBtn.mobile )}}> Why choose Ludopay? </span>
+                <p className = {`${isMobile ? 'h1' : 'h2'} mt-2`} style={isMobile ? style.mobileH1 : style.whyHeading.base}>
+                    <span style={{color:"#1c70eb"}}>Exploring new </span> possibilities in payments for Africans
+                </p>
+                <p className="mt-2" style={isMobile ? {fontSize:'45px', lineHeight:"1.4"} : {width:"60%", textAlign:"center", lineHeight:"2"}}>
+                    We believe that using the Ludopay platform will bring great ease to how businesses can receive 
+                    payments for their products and services, hence exposing more businesses to possibilities that 
+                    lies in how payments can be made in Africa. 
+                </p>
+                <Button  style={{...style.primaryBtn, ...style.btnSpacing, ...(isMobile ? style.btnMobile : '')}}>Get Started</Button>
             </div>
 
             {/* Process Section */}
             <div style={{backgroundImage:`url(${processBg})`}}>
                 <div style={{margin:"8em"}}>
-                    <Row >
-                        <Col span={12}>
-                            <img src={receivePaymentImg} />
+                    <Row>
+                        <Col xl={12} md={12} sm={24}>
+                            <img src={receivePaymentImg}  style={isMobile ? style.mobileImg : {}} />
                         </Col>
-                        <Col span={11}>
-                            <img src={receiveQR} />
-                            <div style={{...style.processHeader}}>
+                        <Col  xl={12} md={12} sm={24}>
+                            <img src={receiveQR} style={isMobile ? {width:"150px"} : {}} />
+                            <div style={{...style.processHeader.base, ...(isMobile ? style.processHeader.mobile : {})}}>
                                 Get to receive payments in BTC, USDT, DOGE and a host of other cryptocurrencies.
                             </div>
-                            <p style={style.processText} className="mt-2"> Enjoy our platform as we support multiple payment 
+                            <p style={{...style.processHeader.text, ...(isMobile ? {fontSize:"60px", lineHeight:"1.3em"} : {}) }}className="mt-2"> Enjoy our platform as we support multiple payment 
                                 cryptocurrency options all on Ludopay
                             </p>
-                            <Button style={{...style.primaryBtn, ...style.btnSpacing}}>Get Started</Button>
+                            <Button style={{...style.primaryBtn, ...style.btnSpacing, ...(isMobile ? style.btnMobile : '')}}>Get Started</Button>
                         </Col>
                     </Row>
 
                     <Row className="mt-l">
-                        <Col span={11}>
-                            <div style={{width:"95%"}}>
-                                <img src={withdrawIcon} />
-                                <div style={{...style.processHeader}}>
-                                Send / withdraw your money to any local bank account of your choice.
-                                </div>
-                                <p style={style.processText} className="mt-2"> Easitly get to use our platform to receive crypto
-                                payments from your vendor and send out payment to any bank of your choice. This is fast 
-                                and seamless 
-                                </p>
-                            
-                                <Button style={{...style.primaryBtn, ...style.btnSpacing}}>Get Started</Button>
-                            </div>
-                        </Col>
-                        <Col span={12}>
-                            <img src={withdrawImg} />
-                        </Col>
-                    </Row>
+                <Col
+                    xl={11}
+                    md={11}
+                    sm={24}
+                    style={{ order: isMobile ? 2 : 1 }}
+                >
+                    <div style={{ width: "95%" }}>
+                        <img src={withdrawIcon} style={isMobile ? {width:"150px"} : {}} />
+                        <div style={{...style.processHeader.base, ...(isMobile ? style.processHeader.mobile : {})}}>
+                            Send / withdraw your money to any local bank account of your choice.
+                        </div>
+                    <p style={{...style.processHeader.text, ...(isMobile ? {fontSize:"60px", lineHeight:"1.3em"} : {}) }} className="mt-2">
+                        Easily get to use our platform to receive crypto
+                        payments from your vendor and send out payment to any bank of your choice. This is fast 
+                        and seamless
+                    </p>
+                    <Button
+                        style={{
+                        ...style.primaryBtn,
+                        ...style.btnSpacing,
+                        ...(isMobile ? style.btnMobile : {})
+                        }}
+                    >
+                        Get Started
+                    </Button>
+                    </div>
+                </Col>
+                <Col
+                    xl={12}
+                    sm={24}
+                    md={12}
+                    style={{ order: isMobile ? 1 : 2 }}
+                >
+                    <img src={withdrawImg} style={isMobile ? style.mobileImg : {}} />
+                </Col>
+                </Row>
 
                     <Row className="mt-l">
-                        <Col span={12}>
-                            <img src={customerSupport} />
+                        <Col xl={12} md={12} sm={24}>
+                            <img src={customerSupport}  style={isMobile ? style.mobileImg : {}} />
                         </Col>
-                        <Col span={11}>
-                            <img src={supportIcon} />
-                            <div style={{...style.processHeader}}>
+                        <Col xl={11} md={11} sm={24}>
+                            <img src={supportIcon} style={isMobile ? {width:"150px"} : {}} />
+                            <div  style={{...style.processHeader.base, ...(isMobile ? style.processHeader.mobile : {})}}>
                                 Get help when you need it with Ludopay’s customer support. 
                             </div>
-                            <p style={style.processText} className="mt-2"> 
+                            <p style={{...style.processHeader.text, ...(isMobile ? {fontSize:"60px", lineHeight:"1.3em"} : {}) }} className="mt-2"> 
                                 Reach out to us via email, hotline or chat. Our customer supports are available round the clock, 24/7   
                             </p>
-                            <Button style={{...style.primaryBtn, ...style.btnSpacing}}>Get Started</Button>
+                            <Button
+                                style={{
+                                ...style.primaryBtn,
+                                ...style.btnSpacing,
+                                ...(isMobile ? style.btnMobile : {})
+                                }}
+                            >
+                                Get Started
+                            </Button>
                         </Col>
                     </Row>
                 </div>
             </div>
          
             {/* How to get Paid with LudoPay */}
-                  <Row  style={{paddingTop:"7em", paddingBottom:"7em"}}>
-                        <Col span={14} className="txt-white" style={{...style.processCol, backgroundImage:`url(${getPaidLImg})`}} >
-                            <h3 style={{fontSize:"45px", fontFamily:"BaseNeue-ExpSemiBsd", width:"70%"}}>
+                   <Row  style={{paddingTop:"7em", paddingBottom:"7em"}}>
+                        <Col xl={14} md={14} sm={24} className="txt-white" 
+                            style={{...style.processCol, backgroundImage:`url(${getPaidLImg})`}} 
+                        >
+                            <h3 style={{fontSize:"45px", fontFamily:"BaseNeue-ExpSemiBsd", width:"70%", ...(isMobile ? {fontSize:'65px'} : {})}}>
                                 How to get paid with Ludopay
                             </h3>
-                            <p  className="txt-white mt-2"  style={{width:"70%", fontSize:"22px"}}>
+                            <p className="txt-white mt-2"  style={{width:"70%", fontSize:"22px", ...(isMobile ? {fontSize:"45px"} : {})}}>
                                 Want to receive payment using Ludopay, well heres the easy step to go about it</p>
                             <div className="mt-5">
                                 {processData.map(item => (
-                                    <span style={style.processPill}> <span style={style.pillCount}>{item.count}</span> {item.title}  </span>
+                                    <span style={{...style.processPill, ...(isMobile ? {fontSize:"40px"} : '')}}> <span style={style.pillCount}>{item.count}</span> {item.title}  </span>
                                 ))
                                 
                                 }
                             </div>
                         </Col>
-                        <Col span={10} style={{...style.processCol, backgroundImage:`url(${getPaidRImg})`}}>
+                      {!isMobile &&  
+                        <Col xl={10} md={10} sm={24} style={{...style.processCol, backgroundImage:`url(${getPaidRImg})`}}>
                             <img src={getPaidImg} width={"100%"} />
                         </Col>
+                        }
                     </Row>
            
             {/* Vision Section */}
             <div>
                 <Row style={{margin:"8em"}}>
-                    <Col span={11}>
-                        <span className="pill" style={style.pill}>Our Vision</span> 
-                        <p className="h2 mt-2" style={{...style.whyHeading, width:"90%", lineHeight:"50px", color:"#1c70eb"}}>
+                    <Col xl={11} sm={24} md={11}>
+                        <span className="pill"  style={{...style.pill, ...(isMobile && style.pillBtn.mobile )}}>Our Vision</span> 
+                        <p className={`${isMobile ? 'h1' : 'h2'} mt-2`} style={{...style.whyHeading, 
+                            ...style.vision, ...(isMobile ?  style.mobileH1 : {})}}>
                             A world of diversity in payments
                         </p>
-                        <p className="mt-2" style={{textAlign:"justify", lineHeight:"30px"}}>
+                        <p className="mt-2" style={{textAlign:"justify", ...(isMobile ? {fontSize:"50px", lineHeight:"1.3em"} : {lineHeight:"30px"})}}>
                             We understand how important revenue is to the smooth running of businesses. We envision a world where businesses
                             are not tethered to any payment system or model, a world where payments can be made through diverse means
                         </p>
                     </Col>
-                    <Col span={11}>
-                        <img src={map} />
+                    <Col xl={11} sm={24} md={11}>
+                        <img src={map} style={isMobile ? {width:"200%", marginTop:"2.5em"} : {}} />
                     </Col>
                 </Row>
           </div>
 
           <div style={{backgroundColor:"#F5FAFE"}}>
             <div  style={{ display:"grid", placeItems:"center", paddingBottom:"5em"}}>
-                <span style={{...style.pill, color:"#1C70EB", backgroundColor:"white"}} className="mt-5"> Testimonials </span><br />
-                <span style={{...style.processHeader, fontSize:"30px", marginTop:"0px"}}>
+                <span style={{...style.pill, color:"#1C70EB", backgroundColor:"white", ...(isMobile ? {fontSize:"45px"} : '')}} className="mt-5"> Testimonials </span><br />
+                <span style={{...style.processHeader, fontSize: isMobile ? "45px" : "30px", marginTop:"0px"}}>
                    What our customers had to say
                 </span>
                 <center>
@@ -259,7 +335,7 @@ const HomePage = () => {
 
           <div style={{margin:"8em"}}>
             <Row style={{display:"grid", placeItems:"center"}}>
-                <p style={{...style.processHeader, fontSize:"31px", fontWeight:"800", color:"#153E90"}}> Frequently Asked Questions</p>
+                <p style={{...style.processHeader,  ...style.faq.base, ...(isMobile ? {fontSize:"55px"} : {})}}> Frequently Asked Questions</p>
 
                 <Collapse
                     bordered={false}
@@ -267,51 +343,70 @@ const HomePage = () => {
                     expandIcon={({ isActive }) => <img src={faqBtn} style={{marginTop:"1em"}}/>}
                     style={{
                         marginTop:"3em",
-                        width: "80%"
+                        width: "80%",
+                        fontSize: isMobile ? "90px" : ''
                     }}
                     items={getItems(panelStyle)}
                     expandIconPosition="end"
+                    // style={}
                 />
             </Row>
           </div>
 
           <div style={{margin:"8em"}}>
-            <Row style={{ backgroundColor:"#1C70EB",borderRadius:"10px"}}>
-                <Col span={11} style={{paddingTop:"3.5em",paddingBottom:"3.5em", paddingLeft:"6em"}}>
-                    <p className="mt-2 txt-white" style={{lineHeight:"50px", fontSize:"35px",fontWeight:"700", fontFamily:"BaseNeue-ExpSemiBsd"}}>
+            <Row style={{ backgroundColor:"#1C70EB", borderRadius:"10px", }}>
+                <Col xl={11} md={11} sm={24} style={{paddingTop:"3.5em", paddingBottom:"3.5em", paddingLeft:"6em", ...(isMobile ? {paddingRight:"6em"} : '') }}>
+                    <p className="mt-2 txt-white" style={{...style.signUp.txt, ...(isMobile ? { fontSize:"60px", 
+                        lineHeight:"1.3em", 
+                        textAlign:"center", 
+                        width:"72%", 
+                        margin:"0px auto"} : {}), }}>
                         Sign up on Ludopay and get a welcome gift
                     </p>
-                    <p className="mt-2 txt-white" style={{fontWeight:"600", fontFamily:"R-Regular"}}>Switch to the crypto-side of payments with Ludopay!
+                    <p className="mt-2 txt-white" style={{fontWeight:"600", fontFamily:"R-Regular", ...(isMobile ? {fontSize:"43px", textAlign:"center", lineHeight:"1.4em"} : {})}}>
+                        Switch to the crypto-side of payments with Ludopay!
                         Get paid in cryptocurrency, receive the funds in your local currency. Transfer or send money to any local bank account. 
                         All on Ludopay.
                     </p>
-                    <p className="mt-2 txt-white" style={{fontWeight:"600", fontFamily:"R-Regular"}}>
+                    <p className="mt-2 txt-white" style={{fontWeight:"600", fontFamily:"R-Regular", ...(isMobile ? {textAlign:"center", fontSize:"45px"} : {})}}>
                         Get the app now:
-                    <div className="mt-2">
-                        <img src={appleBtn} /> <img src={googleBtn} />
-                        </div>
+                    <div className="mt-2" style={isMobile ? {placeItems:"center", marginTop:"1.4em"} : {}}>
+                        <img src={appleBtn} style={isMobile ? {width:"40%"} : {}} /> <img src={googleBtn} style={isMobile ? {width:"40%"} : {}}/>
+                    </div>
                     </p>
                 </Col>
                 <Col span={3}>
                 </Col>
-                <Col span={10} style={{display:"flex",  alignItems: 'right'}}>
-                    <img src={mobileImg} width={"100%"} />
+                <Col
+                    xl={10}
+                    md={10}
+                    sm={24}
+                    style={{
+                        display: "flex",
+                        justifyContent: isMobile ? "center" : "flex-end",
+                        alignItems: "center",
+                        marginLeft: isMobile && "12em"
+                    }}
+                >
+                    <img src={mobileImg} width="100%" />
                 </Col>
+
             </Row>
                
                {/* Newsletter */}
                <div style={{margin:"8em"}}>
                     <Row style={{display:"grid", placeItems:"center"}}>
-                        <span style={{...style.processHeader, fontSize:"40px"}}>
+                        <span style={{...style.processHeader, fontSize: isMobile ? '55px' : "40px"}}>
                             Want Our Latest Updates ?
                         </span>
-                        <p className="mt-1" style={{color:"#0B2253"}}>Input your email to get update from us</p>
+                        <p className="mt-1" style={{color:"#0B2253", fontSize: isMobile && "40px"}}>Input your email to get update from us</p>
                             <Space direction="vertical" size="middle" className="mt-2">
                                 <Space.Compact style={{ width: '100%' }}>
-                                    <Input prefix={<MailFilled color="#183b56" />} style={{width:"35em", height:"50px"}} placeholder="Your email" />
-                                    <Button type="primary" style={{height:"50px", width:"10em"}}>Submit</Button>
+                                    <Input prefix={<MailFilled color="#183b56" />} style={{width: isMobile ? "45em" : "35em", height: isMobile ? "82px" : "50px"}} placeholder="Your email" />
+                                    <Button type="primary" style={{fontSize: isMobile ? '40px' : '', height:isMobile ? "80px" : "50px", width: isMobile ? "8em" : "10em"}}>Submit</Button>
                                 </Space.Compact>
                             </Space>
+                            
                     </Row>
                </div>
           </div>
