@@ -274,7 +274,6 @@ const HomePage = () => {
                         }
                     </Row>
            
-            {/* Vision Section */}
             <div>
                 <Row style={{margin:"8em"}}>
                     <Col xl={11} sm={24} md={11}>
@@ -336,7 +335,6 @@ const HomePage = () => {
           <div style={{margin:"8em"}}>
             <Row style={{display:"grid", placeItems:"center"}}>
                 <p style={{...style.processHeader,  ...style.faq.base, ...(isMobile ? {fontSize:"55px"} : {})}}> Frequently Asked Questions</p>
-
                 <Collapse
                     bordered={false}
                     defaultActiveKey={['1']}
