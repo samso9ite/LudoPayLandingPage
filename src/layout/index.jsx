@@ -11,7 +11,7 @@ const { Header, Footer, Sider, Content } = Layout;
 const LandingPageLayout = ({children}) => {
     return(
         <>
-            <Flex gap="middle" wrap>
+            <Flex >
                 <Layout >
                 <Header style={{backgroundColor:"white", minHeight:"6em"}}>
                     <HeaderNav />

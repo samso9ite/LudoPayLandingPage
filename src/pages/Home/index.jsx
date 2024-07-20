@@ -30,28 +30,18 @@ import { useMediaQuery } from 'react-responsive';
 
 
 const HomePage = () => {
-    // const [isMobile, setIsMobile] = useState(false);
-  
-    // const updateMedia = () => {
-    //     setIsMobile(window.innerWidth <= 576);
-    // };
-
     const isMobile = useMediaQuery({ maxWidth: 767 });
-    
-    useEffect(() => {
-        // updateMedia();
-        // window.addEventListener('resize', updateMedia);
-        // return () => window.removeEventListener('resize', updateMedia);
-        }, []);
-    
-        const panelStyle = {
-            marginBottom: 18,
-            backgroundColor:"#f4fafd",
-            border: '1px solid #BDBDBD',
-            borderRadius:"10px",
-            padding:"0.7em",
-            fontSize: isMobile ? "85px" : ''
-        };
+    if (isMobile) {
+        document.body.style.zoom = "31%";
+    }
+    const panelStyle = {
+        marginBottom: 18,
+        backgroundColor:"#f4fafd",
+        border: '1px solid #BDBDBD',
+        borderRadius:"10px",
+        padding:"0.7em",
+        fontSize: isMobile ? "85px" : ''
+    };
      
     const chunkArray = (array, chunkSize) => {
         const results = [];
