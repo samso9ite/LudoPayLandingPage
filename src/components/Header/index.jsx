@@ -4,14 +4,11 @@ import logo from "../../assets/images/logo.svg";
 import { MenuOutlined } from '@ant-design/icons';
 import { useEffect, useState } from "react";
 import './Navbar.css';
+import { useMediaQuery } from 'react-responsive';
 
 const HeaderNav = () => {
     const [showDrawer, setShowDrawer] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-  
-    const updateMedia = () => {
-        setIsMobile(window.innerWidth <= 576);
-    };
+    const isMobile = useMediaQuery({ maxWidth: 767 });
 
     const NAVS = [
         { label: "Product", key: "/" },
@@ -41,11 +38,7 @@ const HeaderNav = () => {
         }
     };
 
-    useEffect(() => {
-        updateMedia();
-        window.addEventListener('resize', updateMedia);
-        return () => window.removeEventListener('resize', updateMedia);
-      }, []);
+  
     return (
         <>
             <Menu

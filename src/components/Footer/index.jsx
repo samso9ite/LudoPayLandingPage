@@ -2,20 +2,11 @@ import { Col, Row, Space } from "antd"
 import footerLogo from "../../assets/images/footerLogo.svg"
 import {PhoneOutlined, ClockCircleOutlined, MailOutlined,
     LinkedinFilled, FacebookFilled, InstagramFilled, XOutlined } from "@ant-design/icons"
-import { useEffect, useState } from "react";
+import { useMediaQuery } from 'react-responsive';
 
 const FooterComp = () => {
-    const [isMobile, setIsMobile] = useState(false);
-  
-    const updateMedia = () => {
-        setIsMobile(window.innerWidth <= 576);
-    };
-
-    useEffect(() => {
-        updateMedia();
-        window.addEventListener('resize', updateMedia);
-        return () => window.removeEventListener('resize', updateMedia);
-      }, []);
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+   
 
     const style = {
         icons: {
