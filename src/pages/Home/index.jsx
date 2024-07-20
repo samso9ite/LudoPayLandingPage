@@ -26,19 +26,22 @@ import { processData, getItems, items } from "../../data"
 import { style } from "./style"
 import styled from 'styled-components';
 import { useEffect, useState } from "react"
+import { useMediaQuery } from 'react-responsive';
 
 
 const HomePage = () => {
-    const [isMobile, setIsMobile] = useState(false);
+    // const [isMobile, setIsMobile] = useState(false);
   
-    const updateMedia = () => {
-        setIsMobile(window.innerWidth <= 576);
-    };
+    // const updateMedia = () => {
+    //     setIsMobile(window.innerWidth <= 576);
+    // };
+
+    const isMobile = useMediaQuery({ maxWidth: 767 });
     
     useEffect(() => {
-        updateMedia();
-        window.addEventListener('resize', updateMedia);
-        return () => window.removeEventListener('resize', updateMedia);
+        // updateMedia();
+        // window.addEventListener('resize', updateMedia);
+        // return () => window.removeEventListener('resize', updateMedia);
         }, []);
     
         const panelStyle = {
@@ -113,6 +116,7 @@ const HomePage = () => {
 
 
           {/* Our Offer Section */}
+          
           <div style={{backgroundColor:"#F5FAFE"}}>
             <Row style={{padding:"8em"}}>
                 <Col xl={11} md={11} sm={24}>
