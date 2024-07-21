@@ -9,7 +9,7 @@ export const style = {
             lineHeight:"70px"
         },
         mobile: {
-          fontSize: '4em',
+          fontSize: '3em',
           textAlign: 'center',
           fontFamily: "BaseNeue-SemiBold",
         },
@@ -22,7 +22,7 @@ export const style = {
             fontWeight:"800"
         },
         mobile: {
-            fontSize:"2em",
+            fontSize:"20px",
             textAlign: "center",
             color:"white",
         }
@@ -35,8 +35,8 @@ export const style = {
       },
     btnMobile: {
         fontSize:"19pxpx",
-        paddingLeft: '4em',
-        paddingRight: "4em",
+        paddingLeft: '2em',
+        paddingRight: "2em",
     },
     primaryBtn: {
         backgroundColor:"#1C70EB", 
@@ -69,7 +69,7 @@ export const style = {
         // marginBottom:"2em"
     },
     mobileImg: {
-        width:"75%",
+        width:"90%",
         marginBottom:"2em"
     },
   
@@ -100,7 +100,7 @@ export const style = {
        
     },
     btnSpacing: {
-        height:"3.5em",
+        height:"2.5em",
         paddingLeft:"3em", 
         paddingRight:"3em", 
         marginTop:"3em",

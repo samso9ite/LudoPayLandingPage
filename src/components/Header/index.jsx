@@ -69,7 +69,7 @@ const HeaderNav = () => {
                 </span>
             </Menu>
             
-            <Button className="mobile-menu-button" style={!isMobile ? {display : "none"} : ''} icon={<MenuOutlined />} onClick={() => setShowDrawer(true)} />
+            <Button className="mobile-menu-button" style={!isMobile ? {display : "none"} : { marginRight:"20px"}} icon={<MenuOutlined />} onClick={() => setShowDrawer(true)} />
             
             <Drawer
                 title="Menu"

@@ -23,11 +23,11 @@ const FooterComp = () => {
     const currentYear = new Date().getFullYear();
     return(
         <>
-        <Row style={{margin: isMobile ? '' : "3em", paddingBottom: isMobile ? "0.3em" : "3em"}}>
+        <Row style={{margin: isMobile ? '0em' : "3em", paddingBottom: isMobile ? "0.3em" : "3em"}}>
             <Col xl={11} md={11} sm={24}>
                 <img src={footerLogo} width={isMobile && "50%"}/>
                 <p className="txt-white mt-2" style={{lineHeight:"30px", width: isMobile ? "100%" : "80%", 
-                    ...(isMobile ? {fontSize:'20px', lineHeight:"1.3em"} : '') }}>
+                    ...(isMobile ? {fontSize:'18px', lineHeight:"1.3em"} : '') }}>
                         Ludopay is a financial technology company that’s passionate about revolutionizing 
                         how crypto payments work within Africa, for Africans
                 </p>
@@ -65,14 +65,14 @@ const FooterComp = () => {
         </Row>
         <hr style={{border:"0.1px solid #3b4f74", marginTop: isMobile && "2em"}}/>
         <Row className="mt-2" >
-            <Col span={11} className="txt-white" style={isMobile ? {fontSize:"12px"} : {}}>
-                <span>Privacy & Terms </span> <span style={{paddingLeft:"2em"}}>Contact Us</span>
+            <Col span={11} className="txt-white" style={isMobile ? {fontSize:"10px"} : {}}>
+                <span>Privacy & Terms </span> <span style={{paddingLeft:"em"}}>Contact</span>
             </Col>
-            <Col span={9} className="txt-white" style={isMobile ? {fontSize:"12px"} : {}}>
+            <Col span={9} className="txt-white" style={isMobile ? {fontSize:"10px"} : {}}>
                Copyright @ {currentYear}
             </Col>
-            <Col span={4} className="txt-white" style={{display:"flex", justifyContent:"flex-end", fontSize: isMobile ? "15px" : '', marginTop: isMobile && "-8px"}}>
-              <span>  <Space size={7}> <LinkedinFilled /> <FacebookFilled /> <InstagramFilled /> <XOutlined /></Space></span>
+            <Col span={4} className="txt-white" style={{display:"flex", justifyContent:"flex-end", fontSize: isMobile ? "13px" : '', marginTop: isMobile && "-8px"}}>
+              <span>  <Space size={7}> <FacebookFilled /> <InstagramFilled /> <XOutlined /></Space></span>
             </Col>
         </Row>
         </>

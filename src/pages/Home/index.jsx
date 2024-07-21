@@ -85,7 +85,7 @@ const HomePage = () => {
                     ...style.btnSpacing,
                     ...(isMobile ? style.btnMobile : {}),
                     fontSize: isMobile ? "20px" : '',
-                    borderRadius: isMobile ? "20px" : ''
+                    borderRadius: isMobile ? "10px" : ''
                 }}
             >
                         Get Started <ArrowRightOutlined color="white" width={"50"} />
@@ -242,9 +242,9 @@ const HomePage = () => {
             </div>
          
             {/* How to get Paid with LudoPay */}
-                   <Row  style={{paddingTop: isMobile ? "4em" : "7em", paddingBottom: isMobile ? "4em": "7em"}}>
+                   <Row  style={{paddingTop: isMobile ? "2em" : "7em", paddingBottom: isMobile ? "4em": "7em"}}>
                         <Col xl={14} md={14} sm={24} className="txt-white" 
-                            style={{...style.processCol, backgroundImage:`url(${getPaidLImg})` , padding: isMobile ? "3em" : "8em"}} 
+                            style={{...style.processCol, backgroundImage:`url(${getPaidLImg})` , padding: isMobile ? "1.3em" : "8em"}} 
                         >
                             <h3 style={{fontSize:"45px", fontFamily:"BaseNeue-ExpSemiBsd", width: isMobile ? "90%" : "70%", ...(isMobile ? {fontSize:'32px'} : {})}}>
                                 How to get paid with Ludopay
@@ -343,18 +343,18 @@ const HomePage = () => {
             </Row>
           </div>}
 
-          <div style={{margin: isMobile ? '3em' : "8em"}}>
+          <div style={{margin: isMobile ? '1em' : "8em"}}>
             <Row style={{ backgroundColor:"#1C70EB", borderRadius:"10px", }}>
                 <Col xl={11} md={11} sm={24} style={{paddingTop:"3.5em", paddingBottom:"3.5em",
                      paddingLeft:"6em", ...(isMobile ? {paddingRight:"2em", paddingLeft:"2em"} : {}) }}>
-                    <p className="mt-2 txt-white" style={{...style.signUp.txt, ...(isMobile ? { fontSize:"28px", 
+                    <p className="mt-2 txt-white" style={{...style.signUp.txt, ...(isMobile ? { fontSize:"25px", 
                         lineHeight:"1.3em", 
                         textAlign:"center", 
                         width: isMobile ? "100%" : "72%", 
                         margin:"0px auto"} : {}), }}>
                         Sign up on Ludopay and get a welcome gift
                     </p>
-                    <p className="mt-2 txt-white" style={{fontWeight:"600", fontFamily:"R-Regular", ...(isMobile ? {fontSize:"20px", textAlign:"center", lineHeight:"1.4em"} : {})}}>
+                    <p className="mt-2 txt-white" style={{fontWeight:"600", fontFamily:"R-Regular", ...(isMobile ? {fontSize:"19px", textAlign:"center", lineHeight:"1.4em"} : {})}}>
                         Switch to the crypto-side of payments with Ludopay!
                         Get paid in cryptocurrency, receive the funds in your local currency. Transfer or send money to any local bank account. 
                         All on Ludopay.
@@ -384,9 +384,9 @@ const HomePage = () => {
             </Row>
                
                {/* Newsletter */}
-               <div style={{margin: isMobile ? "3em" : "8em"}}>
+               <div style={{margin: isMobile ? "1em" : "8em"}}>
                     <Row style={{display:"grid", placeItems:"center"}}>
-                        <span style={{...style.processHeader, fontSize: isMobile ? '25px' : "40px"}}>
+                        <span style={{...style.processHeader, fontSize: isMobile ? '20px' : "40px"}}>
                             Want Our Latest Updates ?
                         </span>
                         <p className="mt-1" style={{color:"#0B2253", fontSize: isMobile && "20px"}}>Input your email to get update from us</p>
