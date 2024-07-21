@@ -9,31 +9,34 @@ export const style = {
             lineHeight:"70px"
         },
         mobile: {
-          fontSize: '10em',
+          fontSize: '4em',
           textAlign: 'center',
           fontFamily: "BaseNeue-SemiBold",
         },
       },
       heroHeaderDescription: {
         base: {
-            width:"85%", 
+            width:"90%", 
             color:"white", 
             fontSize:"22px", 
             fontWeight:"800"
         },
         mobile: {
-            fontSize:"3em",
+            fontSize:"2em",
             textAlign: "center",
             color:"white",
         }
       },
       heroImg: {
-        margin:"0px auto"
+        // margin:"0px auto",
+        display: "flex",
+        justifyContent: "center" 
+      
       },
     btnMobile: {
-        fontSize:"23px",
-        paddingLeft: '5em',
-        paddingRight: "5em",
+        fontSize:"19pxpx",
+        paddingLeft: '4em',
+        paddingRight: "4em",
     },
     primaryBtn: {
         backgroundColor:"#1C70EB", 
@@ -56,18 +59,18 @@ export const style = {
             // fontSize:"19px"
         },
         mobile: {
-            fontSize: "35px",
+            fontSize: "15px",
             marginBottom:"1em"
         }
     },
     mobileH1: {
-        fontSize:"90px",
+        fontSize:"35px",
         lineHeight:"1.4em",
         // marginBottom:"2em"
     },
     mobileImg: {
-        width:"170%",
-        marginBottom:"4em"
+        width:"75%",
+        marginBottom:"2em"
     },
   
     hero: {
@@ -114,8 +117,8 @@ export const style = {
             color:"#0B2253"
         },
         mobile: {
-            fontSize:"60px", 
-            width:"70%", 
+            fontSize:"25px", 
+            width:"80%", 
             lineHeight:"1.3em"
         },
         text: {
@@ -170,7 +173,7 @@ export const style = {
             fontFamily:"BaseNeue-ExpSemiBsd"
         },
         headerMobile:{
-            fontSize:"60px", 
+            fontSize:"3px", 
             lineHeight:"1.3em", 
             textAlign:"center", 
             width:"70%", 
@@ -183,7 +186,7 @@ export const style = {
             fontWeight:"800", 
             color:"#153E90"
         },
-      
+        
     }
 }
 

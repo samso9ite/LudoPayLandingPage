@@ -48,7 +48,7 @@ const HeaderNav = () => {
                 >
 
                 <div style={{ marginRight: 'auto' }}>
-                    <img style={{ paddingTop: "1em", ...(isMobile ? {width: '150%'} : "") }} src={logo} alt="logo" />
+                    <img style={{ paddingTop: "1em", ...(isMobile ? {width: '100%'} : "") }} src={logo} alt="logo" />
                 </div>
                 <span style={{...(isMobile ? {display:"none"} : "")}}>
                 {NAVS.map((menu) => (
@@ -85,14 +85,16 @@ const HeaderNav = () => {
                             <Link to={menu.key} onClick={() => setShowDrawer(false)} style={{fontSize:"17px"}}>{menu.label}</Link>
                         </Menu.Item>
                     ))}
-                    <Menu.Item>
+                    {/* <Menu.Item>
                         <Link to="/">
-                            <Button style={{ ...style.button, width: "15em", border: "1px solid #153E90" }}>Login</Button>
+                            <span style={{ ...style.span, border: "1px solid #153E90",  padding:"5em", }}>Login</span>
                         </Link>
+                    </Menu.Item> */}
+                    <Menu.Item style={{}}>
+                        <Link to="/"><span style={{ ...style.button, ...style.signupbtn, border:"1px solid", padding:"7.5em", borderRadius:"30px", }}>Login</span></Link>
                     </Menu.Item>
-                    <Menu.Item style={{marginTop:"20px"}}>
-    
-                        <Link to="/"><Button style={{ ...style.button, ...style.signupbtn, width:"15em" }}>Sign up For Free</Button></Link>
+                    <Menu.Item style={{marginTop:"10px"}}>
+                        <Link to="/"><span style={{ ...style.button, ...style.signupbtn, border:"1px", padding:"5em", borderRadius:"10px" }}>Sign up For Free</span></Link>
                     </Menu.Item>
                 </Menu>
             </Drawer>
