@@ -57,14 +57,14 @@ const HeaderNav = () => {
                     </Menu.Item>
                 ))}
                 <Menu.Item>
-                    <Link to="/">
+                    <Link to="https://ludo-pay-frontend.vercel.app/auth/signin">
                         <Button style={{ ...style.button, width: "10em", border: "1px solid #153E90", height: "3em"}}>
                             Login
                         </Button>
                     </Link>
                 </Menu.Item>
                 <Menu.Item>
-                    <Link to="/"> <Button style={{ ...style.button, ...style.signupbtn, height:"3em" }}>Sign up For Free</Button></Link>
+                    <Link to="https://ludo-pay-frontend.vercel.app/auth/signup"> <Button style={{ ...style.button, ...style.signupbtn, height:"3em" }}>Sign up For Free</Button></Link>
                 </Menu.Item>
                 </span>
             </Menu>
@@ -91,10 +91,10 @@ const HeaderNav = () => {
                         </Link>
                     </Menu.Item> */}
                     <Menu.Item style={{}}>
-                        <Link to="/"><span style={{ ...style.button, ...style.signupbtn, border:"1px solid", padding:"7.5em", borderRadius:"30px", }}>Login</span></Link>
+                        <Link to="https://ludo-pay-frontend.vercel.app/auth/signin"><span style={{ ...style.button, ...style.signupbtn, border:"1px solid", padding:"7.5em", borderRadius:"30px", }}>Login</span></Link>
                     </Menu.Item>
                     <Menu.Item style={{marginTop:"10px"}}>
-                        <Link to="/"><span style={{ ...style.button, ...style.signupbtn, border:"1px", padding:"5em", borderRadius:"10px" }}>Sign up For Free</span></Link>
+                        <Link to="https://ludo-pay-frontend.vercel.app/auth/signin"><span style={{ ...style.button, ...style.signupbtn, border:"1px", padding:"5em", borderRadius:"10px" }}>Sign up For Free</span></Link>
                     </Menu.Item>
                 </Menu>
             </Drawer>

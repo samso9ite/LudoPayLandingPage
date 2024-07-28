@@ -27,6 +27,7 @@ import { style } from "./style"
 import styled from 'styled-components';
 import { useEffect, useState } from "react"
 import { useMediaQuery } from 'react-responsive';
+import { Link } from "react-router-dom"
 
 
 const HomePage = () => {
@@ -78,6 +79,7 @@ const HomePage = () => {
                 justifyContent: isMobile ? "center" : "flex-start",
             }}
         >
+           <Link to="https://ludo-pay-frontend.vercel.app/auth/signup"> 
             <Button
                 size="large"
                 style={{
@@ -90,6 +92,7 @@ const HomePage = () => {
             >
                         Get Started <ArrowRightOutlined color="white" width={"50"} />
                     </Button>
+                    </Link>
                 </div>
             </Col>
             <Col
@@ -155,7 +158,7 @@ const HomePage = () => {
                     payments for their products and services, hence exposing more businesses to possibilities that 
                     lies in how payments can be made in Africa. 
                 </p>
-                <Button  style={{...style.primaryBtn, ...style.btnSpacing, ...(isMobile ? style.btnMobile : '')}}>Get Started</Button>
+             <Link to="https://ludo-pay-frontend.vercel.app/auth/signup">   <Button  style={{...style.primaryBtn, ...style.btnSpacing, ...(isMobile ? style.btnMobile : '')}}>Get Started</Button> </Link>
             </div>
 
             {/* Process Section */}
@@ -173,7 +176,7 @@ const HomePage = () => {
                             <p style={{...style.processHeader.text, ...(isMobile ? {fontSize:"20px", lineHeight:"1.3em"} : {}) }}className="mt-2"> Enjoy our platform as we support multiple payment 
                                 cryptocurrency options all on Ludopay
                             </p>
-                            <Button style={{...style.primaryBtn, ...style.btnSpacing, ...(isMobile ? style.btnMobile : '')}}>Get Started</Button>
+                           <Link to="https://ludo-pay-frontend.vercel.app/auth/signup"> <Button style={{...style.primaryBtn, ...style.btnSpacing, ...(isMobile ? style.btnMobile : '')}}>Get Started</Button> </Link>
                         </Col>
                     </Row>
 
@@ -194,7 +197,7 @@ const HomePage = () => {
                         payments from your vendor and send out payment to any bank of your choice. This is fast 
                         and seamless
                     </p>
-                    <Button
+                    <Link to="https://ludo-pay-frontend.vercel.app/auth/signup"><Button
                         style={{
                         ...style.primaryBtn,
                         ...style.btnSpacing,
@@ -203,6 +206,7 @@ const HomePage = () => {
                     >
                         Get Started
                     </Button>
+                    </Link>
                     </div>
                 </Col>
                 <Col
@@ -227,7 +231,7 @@ const HomePage = () => {
                             <p style={{...style.processHeader.text, ...(isMobile ? {fontSize:"20px", lineHeight:"1.3em"} : {}) }} className="mt-2"> 
                                 Reach out to us via email, hotline or chat. Our customer supports are available round the clock, 24/7   
                             </p>
-                            <Button
+                           <Link to="https://ludo-pay-frontend.vercel.app/auth/signup"> <Button
                                 style={{
                                 ...style.primaryBtn,
                                 ...style.btnSpacing,
@@ -236,6 +240,7 @@ const HomePage = () => {
                             >
                                 Get Started
                             </Button>
+                            </Link>
                         </Col>
                     </Row>
                 </div>
