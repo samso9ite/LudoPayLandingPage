@@ -1,12 +1,18 @@
 import {RouterProvider, createBrowserRouter} from 'react-router-dom'
 import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/Home';
+import Transfer from './pages/Transfer';
 
 const router = createBrowserRouter([
   { 
     path: "/",
     errorElement: <ErrorPage />,
     element: <HomePage />
+  },
+  { 
+    path: "/transfer",
+    errorElement: <ErrorPage />,
+    element: <Transfer />
   }
 ])
 function App() {

@@ -118,3 +118,7 @@ h1{
     color: #4D4D4D;
 }
 
+.customInputStyle{
+  height: 55px;
+  border-color:#4D4D4D ;
+}

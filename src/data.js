@@ -25,6 +25,13 @@ export let processData = [
     },
 ]
 
+export const currOptions = [
+  {
+    value: 'NGN',
+    label: 'NGN',
+  },
+];
+
 const panelStyle = {
     marginBottom: 18,
     backgroundColor:"#f4fafd",

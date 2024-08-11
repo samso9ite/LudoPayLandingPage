@@ -15,19 +15,17 @@ import securityIcon from "../../assets/images/security.svg"
 import supportIcon from "../../assets/images/supportIcon.svg"
 import faqBtn from "../../assets/images/faqBtn.svg"
 import processBg from "../../assets/images/processBg.svg"
-import mobileImg from "../../assets/images/mobileImg.svg"
-import googleBtn from "../../assets/images/googleBtn.svg"
-import appleBtn from "../../assets/images/appleBtn.svg"
+
 import customerSupport from "../../assets/images/customerSupport.svg"
 import {ArrowRightOutlined, MailFilled} from "@ant-design/icons"
-import Input from "antd/es/input/Input"
 import testimonialImg from "../../assets/images/testimonialImg.svg"
 import { processData, getItems, items } from "../../data"
 import { style } from "./style"
-import styled from 'styled-components';
-import { useEffect, useState } from "react"
 import { useMediaQuery } from 'react-responsive';
 import { Link } from "react-router-dom"
+
+import SignupComp from "../../components/Signup"
+import NewsletterComp from "../../components/Newsletter"
 
 
 const HomePage = () => {
@@ -349,61 +347,9 @@ const HomePage = () => {
           </div>}
 
           <div style={{margin: isMobile ? '1em' : "8em"}}>
-            <Row style={{ backgroundColor:"#1C70EB", borderRadius:"10px", }}>
-                <Col xl={11} md={11} sm={24} style={{paddingTop:"3.5em", paddingBottom:"3.5em",
-                     paddingLeft:"6em", ...(isMobile ? {paddingRight:"2em", paddingLeft:"2em"} : {}) }}>
-                    <p className="mt-2 txt-white" style={{...style.signUp.txt, ...(isMobile ? { fontSize:"25px", 
-                        lineHeight:"1.3em", 
-                        textAlign:"center", 
-                        width: isMobile ? "100%" : "72%", 
-                        margin:"0px auto"} : {}), }}>
-                        Sign up on Ludopay and get a welcome gift
-                    </p>
-                    <p className="mt-2 txt-white" style={{fontWeight:"600", fontFamily:"R-Regular", ...(isMobile ? {fontSize:"19px", textAlign:"center", lineHeight:"1.4em"} : {})}}>
-                        Switch to the crypto-side of payments with Ludopay!
-                        Get paid in cryptocurrency, receive the funds in your local currency. Transfer or send money to any local bank account. 
-                        All on Ludopay.
-                    </p>
-                    <p className="mt-2 txt-white" style={{fontWeight:"600", fontFamily:"R-Regular", ...(isMobile ? {textAlign:"center", fontSize:"20px"} : {})}}>
-                        Get the app now:
-                    <div className="mt-2" style={isMobile ? {placeItems:"center", marginTop:"1.4em"} : {}}>
-                        <img src={appleBtn} style={isMobile ? {width:"45%"} : {}} /> <img src={googleBtn} style={isMobile ? {width:"45%"} : {}}/>
-                    </div>
-                    </p>
-                </Col>
-                <Col span={3}>
-                </Col>
-                <Col
-                    xl={10}
-                    md={10}
-                    sm={24}
-                    style={{
-                        display: "flex",
-                        justifyContent: isMobile ? "center" : "flex-end",
-                        alignItems: "center",
-                    }}
-                >
-                    <img src={mobileImg} width="70%" />
-                </Col>
+            <SignupComp />
 
-            </Row>
-               
-               {/* Newsletter */}
-               <div style={{margin: isMobile ? "1em" : "8em"}}>
-                    <Row style={{display:"grid", placeItems:"center"}}>
-                        <span style={{...style.processHeader, fontSize: isMobile ? '20px' : "40px"}}>
-                            Want Our Latest Updates ?
-                        </span>
-                        <p className="mt-1" style={{color:"#0B2253", fontSize: isMobile && "20px"}}>Input your email to get update from us</p>
-                            <Space direction="vertical" size="middle" className="mt-2">
-                                <Space.Compact style={{ width: '100%' }}>
-                                    <Input prefix={<MailFilled color="#183b56" />} style={{width: isMobile ? "100%" : "35em", height: isMobile ? "35px" : "50px"}} placeholder="Your email" />
-                                    <Button type="primary" style={{fontSize: isMobile ? '15px' : '', height:isMobile ? "35px" : "50px", width: isMobile ? "5em" : "10em"}}>Submit</Button>
-                                </Space.Compact>
-                            </Space>
-                            
-                    </Row>
-               </div>
+            <NewsletterComp />
           </div>
         </LandingPageLayout>
            
