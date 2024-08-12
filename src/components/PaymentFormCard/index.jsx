@@ -7,6 +7,7 @@ import usdtIcon from "../../assets/images/usdt.svg"
 import tooltip from "../../assets/images/tooltip.svg"
 import { useState } from "react"
 import { currOptions } from "../../data"
+import axios from 'axios'
 
 const PaymentFormCard = () => {
     const[senderName, setSenderName ] = useState('')
@@ -34,10 +35,54 @@ const PaymentFormCard = () => {
         }
     }
 
-    const paymentChainHandler = () => {
+    const fetchRate = (coin) => {
+        let values = {
+            amount: inputAmount,
+            coin: coin
+        }
 
+        axios.post(
+            "https://api.ludo.ng/api/transactions/get-coin-rate",
+            values,
+            {   headers: {
+                    "Access-Key": "SMtqDZZW.dIpeCzCrT7Q2XP7tA4PUe4kAcEFJ9KVC"
+                }
+            },
+        ).then(res => {
+                setUsdVal(res.data.data.usd_amount)
+                setCoinRate(res.data.data.crypto_amount)
+            }
+        )
     }
-
+    const paymentChainHandler = (value) => {
+        setPaymentChain(value)
+        fetchRate(value)
+    }
+    const initiateTransactionHandler = () => {
+        console.log("initiate transaction");
+        let vals = {
+            payer_email:senderEmail,
+            payer_first_name: '',
+            payer_last_name: '',
+            crypto_amount: coinRate,
+            amount: inputAmount,
+            coin: paymentChain,
+            merchant_id: ''
+        }
+        axios.post(
+            "https://api.ludo.ng/api/transactions/confirm-payment",
+            vals,
+            {
+                headers : {
+                    "Access-Key": process.env.REACT_APP_API_ACCESS
+                }
+            }
+        ).then((res) => {
+            console.log("res");
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     return(
         <>
               <Card style={style.card}>
@@ -96,7 +141,7 @@ const PaymentFormCard = () => {
                             htmlType="submit"
                             className="customInputStyle mt-2 block-btn"
                             style={{color:"white", backgroundColor:"#1C70EB", border:"none", width:"47%", float:"right", fontSize:"19px"}}
-                            // onClick={initiateTransactionHandler}
+                            onClick={initiateTransactionHandler}
                         >
                             Next
                         </Button>
