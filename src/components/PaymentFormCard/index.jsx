@@ -9,7 +9,7 @@ import { useState } from "react"
 import { currOptions } from "../../data"
 import axios from 'axios'
 
-const PaymentFormCard = () => {
+const PaymentFormCard = (props) => {
     const[senderName, setSenderName ] = useState('')
     const[senderEmail, setSenderEmail ] = useState('')
     const[inputAmount, setInputAmount ] = useState(0)
@@ -40,7 +40,6 @@ const PaymentFormCard = () => {
             amount: inputAmount,
             coin: coin
         }
-
         axios.post(
             "https://api.ludo.ng/api/transactions/get-coin-rate",
             values,
@@ -59,18 +58,20 @@ const PaymentFormCard = () => {
         fetchRate(value)
     }
     const initiateTransactionHandler = () => {
-        console.log("initiate transaction");
+        let fullName = senderName.trim()
+        let nameParts = fullName.split(' ');
+
         let vals = {
             payer_email:senderEmail,
-            payer_first_name: '',
-            payer_last_name: '',
+            payer_first_name: nameParts[0],
+            payer_last_name: nameParts.slice(1).join(' ') || ' ',
             crypto_amount: coinRate,
             amount: inputAmount,
             coin: paymentChain,
-            merchant_id: ''
+            merchant_id: 'd5a90773-9a09-44a0-8313-3ea99096645b'
         }
         axios.post(
-            "https://api.ludo.ng/api/transactions/confirm-payment",
+            "https://api.ludo.ng/api/transactions/initiate",
             vals,
             {
                 headers : {
@@ -78,7 +79,9 @@ const PaymentFormCard = () => {
                 }
             }
         ).then((res) => {
-            console.log("res");
+            console.log(res.data);
+            
+            props?.switchPaymentState(vals, res?.data?.data.wallet_address, res?.data?.data.reference)
         }).catch((err) => {
             console.log(err);
         })

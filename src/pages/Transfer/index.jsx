@@ -18,8 +18,10 @@ const Transfer = () => {
     const [paymentState, setPaymentState] = useState("form")
     const [transactionVals, setTransactionVals] = useState()
 
-    const switchPaymentStateHandler = (values, address) => {
-        setTransactionVals({values, 'address': address})
+    const switchPaymentStateHandler = (values, address, reference) => {
+        console.log(address);
+        console.log("I'm here now");
+        setTransactionVals({values, 'address': address, 'reference': reference})
         setPaymentState("QRState")
     }
 
