@@ -27,7 +27,8 @@ const PaymentFormCard = (props) => {
         input: {
             marginTop:"0.2em",
             height:"3.4em",
-            flex:1
+            flex:1,
+            
         },
         card: {
             backgroundColor:"#153E90", 
@@ -113,11 +114,21 @@ const PaymentFormCard = (props) => {
                             onChange={(e) => setSenderName(e.target.value) }
                         />
                     </FormItem>
-                    <Space direction="vertical" >
-                        <label htmlFor="name" style={style.label} >Input Amount</label>
-                        <Space.Compact style={{width:!isMobile ? "27.6em" : "100%"}}>
-                            <Input type="number" defaultValue="200,000" onChange={(e) => (setInputAmount(e.target.value))} value={inputAmount} style={{ ...style.input }}/>
-                            <Select defaultValue="NGN"  options={currOptions} style={style.input}/>
+                    <Space direction="vertical">
+                        <label htmlFor="name" style={style.label}>Input Amount</label>
+                        <Space.Compact style={{ width: !isMobile ? "27.6em" : undefined }}>
+                            <Input 
+                                type="number" 
+                                defaultValue="200,000"
+                                onChange={(e) => setInputAmount(e.target.value)} 
+                                value={inputAmount} 
+                                style={{ ...style.input, minWidth: isMobile ? "67%" : undefined }} 
+                            />
+                            <Select 
+                                defaultValue="NGN"  
+                                options={currOptions} 
+                                style={{ ...style.input,   minWidth: isMobile ? "67%" : undefined }}
+                            />
                         </Space.Compact>
                     </Space>
                     <Space direction="vertical" style={{marginTop:"1.4em"}}>
