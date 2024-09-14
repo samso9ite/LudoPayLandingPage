@@ -13,14 +13,11 @@ const Transfer = () => {
         paymentSpacing: {
             margin: "0 auto"
         }
-       
     }
     const [paymentState, setPaymentState] = useState("form")
     const [transactionVals, setTransactionVals] = useState()
 
     const switchPaymentStateHandler = (values, address, reference) => {
-        console.log(address);
-        console.log("I'm here now");
         setTransactionVals({values, 'address': address, 'reference': reference})
         setPaymentState("QRState")
     }
@@ -29,7 +26,9 @@ const Transfer = () => {
       <LandingPageLayout>
         <div style={{margin: isMobile ? '1em' : "8em"}}>
         <Row style={{marginBottom:"5em"}}>
-            <Col span={paymentState == "form" ? 10 : 15} 
+            <Col xl={paymentState == "form" ? 10 : 15}
+             md={paymentState == "form" ? 10 : 15}
+             sm={24}
                 style={style.paymentSpacing}>
                 {   paymentState == "form" ?  
                     <PaymentFormCard switchPaymentState={switchPaymentStateHandler}/> :

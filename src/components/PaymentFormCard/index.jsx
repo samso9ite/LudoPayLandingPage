@@ -8,8 +8,10 @@ import tooltip from "../../assets/images/tooltip.svg"
 import { useState } from "react"
 import { currOptions } from "../../data"
 import axios from 'axios'
+import { useMediaQuery } from 'react-responsive';
 
 const PaymentFormCard = (props) => {
+    const isMobile = useMediaQuery({ maxWidth: 767 });
     const[senderName, setSenderName ] = useState('')
     const[senderEmail, setSenderEmail ] = useState('')
     const[inputAmount, setInputAmount ] = useState(0)
@@ -31,7 +33,7 @@ const PaymentFormCard = (props) => {
             backgroundColor:"#153E90", 
             color:"white", 
             borderRadius:"15px",
-            padding:"1em 3em"
+            padding:!isMobile ? "1em 3em" : undefined
         }
     }
 
@@ -80,7 +82,6 @@ const PaymentFormCard = (props) => {
             }
         ).then((res) => {
             console.log(res.data);
-            
             props?.switchPaymentState(vals, res?.data?.data.wallet_address, res?.data?.data.reference)
         }).catch((err) => {
             console.log(err);
@@ -88,7 +89,7 @@ const PaymentFormCard = (props) => {
     }
     return(
         <>
-              <Card style={style.card}>
+            <Card style={style.card}>
                 <div >
                     <h3 style={{color:"white", fontSize:"25px", fontWeight:"900"}}>Transfer to Ludopay Account</h3>
                     <p style={{color:"white", fontSize:"20px", fontWeight:"900", fontStyle:"italic"}}> - Samson Restaurant</p>
@@ -114,15 +115,15 @@ const PaymentFormCard = (props) => {
                     </FormItem>
                     <Space direction="vertical" >
                         <label htmlFor="name" style={style.label} >Input Amount</label>
-                        <Space.Compact style={{width:"28.8em"}}>
-                            <Input type="number" defaultValue="200,000" onChange={(e) => (setInputAmount(e.target.value))} value={inputAmount} style={{ ...style.input, width: '400%' }}/>
+                        <Space.Compact style={{width:!isMobile ? "27.6em" : "100%"}}>
+                            <Input type="number" defaultValue="200,000" onChange={(e) => (setInputAmount(e.target.value))} value={inputAmount} style={{ ...style.input }}/>
                             <Select defaultValue="NGN"  options={currOptions} style={style.input}/>
                         </Space.Compact>
                     </Space>
                     <Space direction="vertical" style={{marginTop:"1.4em"}}>
                         <label htmlFor="name" style={style.label} >Select Payment Chain</label>
-                        <Space.Compact style={{width:"28.8em"}}>
-                            <Input  value={coinRate} style={{...style.input, width:"200%"}} />
+                        <Space.Compact style={{width: !isMobile ? "28.8em" : undefined}}>
+                            <Input  value={coinRate} style={{...style.input}} />
                             <Select  style={style.input}  onChange={paymentChainHandler} value={paymentChain}>
                                 <Select.Option value=""> -- Select Coin --</Select.Option>
                                 <Select.Option value="bitcoin"> <img src={btcIcon} /> Bitcoin</Select.Option>

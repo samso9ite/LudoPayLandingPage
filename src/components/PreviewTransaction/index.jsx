@@ -54,7 +54,7 @@ const PreviewTransaction = (props) => {
         <>
         <Card style={style.card}>
             <Row>
-                <Col span={13}>
+                <Col xl={13} md={13} sm={24}>
                     <p style={style.txt_white}>Email Address</p>
                     <span style={style.value}>{props?.transactionValues.values.payer_email}</span>
                     <hr style={style.hr} />
