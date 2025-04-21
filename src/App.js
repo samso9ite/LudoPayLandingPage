@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     element: <HomePage />
   },
   { 
-    path: "/transfer",
+    path: "/transfer/:merchant_id",
     errorElement: <ErrorPage />,
     element: <Transfer />
   }

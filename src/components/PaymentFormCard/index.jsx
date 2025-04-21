@@ -52,11 +52,18 @@ const PaymentFormCard = (props) => {
             },
         ).then(res => {
                 setUsdVal(res.data.data.usd_amount)
-                setCoinRate(res.data.data.crypto_amount)
+                let coinVal =  res.data.data.crypto_amount.toString()
+                if(coinVal.includes('.') &&coinVal.split('.')[1] > 20)
+                {
+                    setCoinRate(parseFloat(coinVal).toFixed(20))
+                }else{
+                    setCoinRate(res.data.data.crypto_amount)
+                }
             }
         )
     }
     const paymentChainHandler = (value) => {
+        console.log(value);
         setPaymentChain(value)
         fetchRate(value)
     }
@@ -71,7 +78,7 @@ const PaymentFormCard = (props) => {
             crypto_amount: coinRate,
             amount: inputAmount,
             coin: paymentChain,
-            merchant_id: 'd5a90773-9a09-44a0-8313-3ea99096645b'
+            merchant_id: props?.merchantInfo.merchant_id
         }
         axios.post(
             "https://api.ludo.ng/api/transactions/initiate",
@@ -93,7 +100,7 @@ const PaymentFormCard = (props) => {
             <Card style={style.card}>
                 <div >
                     <h3 style={{color:"white", fontSize:"25px", fontWeight:"900"}}>Transfer to Ludopay Account</h3>
-                    <p style={{color:"white", fontSize:"20px", fontWeight:"900", fontStyle:"italic"}}> - Samson Restaurant</p>
+                    <p style={{color:"white", fontSize:"20px", fontWeight:"900", fontStyle:"italic"}}> - {props?.merchantInfo.username}</p>
                     <p style={{color:"white", fontSize:"12px", fontWeight:"900"}}>Input your payment details here, to generate invoice and make payment</p>
                 </div>
                 <Tooltip title="">
